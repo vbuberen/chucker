@@ -9,11 +9,7 @@ import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
-import android.view.LayoutInflater
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.View
-import android.view.ViewGroup
+import android.view.*
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
@@ -37,9 +33,10 @@ import kotlinx.coroutines.withContext
 private const val GET_FILE_FOR_SAVING_REQUEST_CODE: Int = 43
 
 internal class TransactionPayloadFragment :
-    Fragment(), SearchView.OnQueryTextListener {
+    Fragment(), SearchView.OnQueryTextListener, FilterResultsCallback {
 
     private lateinit var payloadBinding: ChuckerFragmentTransactionPayloadBinding
+    private lateinit var payloadAdapter: TransactionBodyAdapter
 
     private var backgroundSpanColor: Int = Color.YELLOW
     private var foregroundSpanColor: Int = Color.RED
@@ -78,13 +75,30 @@ internal class TransactionPayloadFragment :
                 uiScope.launch {
                     showProgress()
                     val result = processPayload(type, transaction)
-                    payloadBinding.responseRecyclerView.adapter = TransactionBodyAdapter(result)
+                    payloadAdapter = TransactionBodyAdapter(result) {
+                        onSearchDone(it)
+                    }
+                    payloadBinding.responseRecyclerView.adapter = payloadAdapter
                     hideProgress()
                 }
             }
         )
+        payloadBinding.apply {
+            nextItem.setOnClickListener {
+                // Scroll to next item
+                Toast.makeText(requireContext(), "Next", Toast.LENGTH_SHORT).show()
+            }
+            previousItem.setOnClickListener {
+                // Scroll to previous item
+                Toast.makeText(requireContext(), "Previous", Toast.LENGTH_SHORT).show()
+            }
+        }
     }
 
+    override fun onPause() {
+        super.onPause()
+        payloadBinding.searchResultsContainer.visibility = View.GONE
+    }
     override fun onDestroy() {
         super.onDestroy()
         uiScope.cancel()
@@ -97,9 +111,24 @@ internal class TransactionPayloadFragment :
         if (shouldShowSearchIcon(transaction)) {
             val searchMenuItem = menu.findItem(R.id.search)
             searchMenuItem.isVisible = true
+            searchMenuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
+                override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+                    payloadBinding.searchResultsContainer.visibility = View.VISIBLE
+                    return true
+                }
+
+                override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+                    payloadBinding.searchResultsContainer.visibility = View.GONE
+                    return true
+                }
+            })
             val searchView = searchMenuItem.actionView as SearchView
             searchView.setOnQueryTextListener(this)
             searchView.setIconifiedByDefault(true)
+            searchView.setOnCloseListener {
+                // Clear search
+                return@setOnCloseListener false
+            }
         }
 
         if (shouldShowSaveIcon(transaction)) {
@@ -184,7 +213,8 @@ internal class TransactionPayloadFragment :
     override fun onQueryTextChange(newText: String): Boolean {
         val adapter = (payloadBinding.responseRecyclerView.adapter as TransactionBodyAdapter)
         if (newText.isNotBlank() && newText.length > NUMBER_OF_IGNORED_SYMBOLS) {
-            adapter.highlightQueryWithColors(newText, backgroundSpanColor, foregroundSpanColor)
+            adapter.filter.filter(newText)
+            //adapter.highlightQueryWithColors(newText, backgroundSpanColor, foregroundSpanColor)
         } else {
             adapter.resetHighlight()
         }
@@ -239,7 +269,7 @@ internal class TransactionPayloadFragment :
             if (type == TYPE_RESPONSE && responseBitmap != null) {
                 result.add(TransactionPayloadItem.ImageItem(responseBitmap))
             } else if (!isBodyPlainText) {
-                requireContext().getString(R.string.chucker_body_omitted)?.let {
+                requireContext().getString(R.string.chucker_body_omitted).let {
                     result.add(TransactionPayloadItem.BodyLineItem(SpannableStringBuilder.valueOf(it)))
                 }
             } else {
@@ -284,6 +314,12 @@ internal class TransactionPayloadFragment :
                 return@withContext false
             }
             return@withContext true
+        }
+    }
+
+    override fun onSearchDone(itemsCount: Int?) {
+        itemsCount?.let { foundItems ->
+            // Do the magic
         }
     }
 

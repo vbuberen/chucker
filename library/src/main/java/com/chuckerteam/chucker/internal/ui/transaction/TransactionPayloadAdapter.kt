@@ -6,6 +6,8 @@ import android.text.Spanned
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Filter
+import android.widget.Filterable
 import androidx.recyclerview.widget.RecyclerView
 import com.chuckerteam.chucker.databinding.ChuckerTransactionItemBodyLineBinding
 import com.chuckerteam.chucker.databinding.ChuckerTransactionItemHeadersBinding
@@ -18,8 +20,9 @@ import com.chuckerteam.chucker.internal.support.highlightWithDefinedColors
  * performances when loading big payloads.
  */
 internal class TransactionBodyAdapter(
-    private val bodyItems: List<TransactionPayloadItem>
-) : RecyclerView.Adapter<TransactionPayloadViewHolder>() {
+    private val bodyItems: List<TransactionPayloadItem>,
+    private val onSearchDone: (Int?) -> Unit
+) : RecyclerView.Adapter<TransactionPayloadViewHolder>(), Filterable {
 
     override fun onBindViewHolder(holder: TransactionPayloadViewHolder, position: Int) {
         holder.bind(bodyItems[position])
@@ -59,8 +62,7 @@ internal class TransactionBodyAdapter(
             .forEach { (index, item) ->
                 if (item.line.contains(newText, ignoreCase = true)) {
                     item.line.clearSpans()
-                    item.line = item.line.toString()
-                        .highlightWithDefinedColors(newText, backgroundColor, foregroundColor)
+                    item.line = item.line.toString().highlightWithDefinedColors(newText, backgroundColor, foregroundColor)
                     notifyItemChanged(index + 1)
                 } else {
                     // Let's clear the spans if we haven't found the query string.
@@ -84,6 +86,34 @@ internal class TransactionBodyAdapter(
                 }
             }
     }
+
+    override fun getFilter(): Filter = TransactionBodyFilter()
+
+    inner class TransactionBodyFilter : Filter() {
+        override fun performFiltering(constraint: CharSequence?): FilterResults {
+            val matchingItems = arrayListOf<Int>()
+
+            if (!constraint.isNullOrBlank() && constraint.length > 1) {
+                bodyItems.filterIsInstance<TransactionPayloadItem.BodyLineItem>()
+                    .withIndex()
+                    .forEach { (index, item) ->
+                        if (item.line.contains(constraint, ignoreCase = true)) {
+                            matchingItems.add(index + 1)
+
+                        }
+                    }
+            }
+            return FilterResults().apply {
+                values = matchingItems
+                count = matchingItems.size
+            }
+        }
+
+        override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+            onSearchDone(results?.count)
+        }
+    }
+
 
     companion object {
         private const val TYPE_HEADERS = 1
