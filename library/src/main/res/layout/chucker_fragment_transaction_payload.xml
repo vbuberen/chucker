@@ -37,49 +37,14 @@
         tools:listitem="@layout/chucker_transaction_item_body_line"
         tools:visibility="visible" />
 
-    <View
+    <com.chuckerteam.chucker.internal.ui.transaction.SearchResultsView
         android:id="@+id/searchResultsContainer"
         android:layout_width="0dp"
-        android:background="@color/chucker_color_primary_variant"
-        app:layout_constraintStart_toStartOf="parent"
-        android:visibility="gone"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        android:layout_height="48dp"
-        tools:visibility="visible"/>
-
-    <TextView
-        android:id="@+id/searchOccurrence"
-        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/chucker_doub_grid"
-        android:textColor="@color/chucker_color_on_primary"
-        android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="@id/searchResultsContainer"
-        app:layout_constraintStart_toStartOf="@id/searchResultsContainer"
-        app:layout_constraintTop_toTopOf="@id/searchResultsContainer"
-        tools:text="32 / 1230" />
-
-    <ImageView
-        android:id="@+id/nextItem"
-        android:layout_width="@dimen/chucker_quad_grid"
-        android:layout_height="@dimen/chucker_quad_grid"
-        android:layout_marginEnd="@dimen/chucker_doub_grid"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintBottom_toBottomOf="@id/searchResultsContainer"
-        app:layout_constraintEnd_toEndOf="@id/searchResultsContainer"
-        app:layout_constraintTop_toTopOf="@id/searchResultsContainer"
-        android:src="@drawable/chucker_ic_down" />
-
-    <ImageView
-        android:id="@+id/previousItem"
-        android:layout_width="@dimen/chucker_quad_grid"
-        android:layout_height="@dimen/chucker_quad_grid"
-        android:layout_marginHorizontal="@dimen/chucker_quad_grid"
-        android:background="?android:attr/selectableItemBackground"
-        app:layout_constraintBottom_toBottomOf="@id/searchResultsContainer"
-        app:layout_constraintEnd_toStartOf="@id/nextItem"
-        app:layout_constraintTop_toTopOf="@id/searchResultsContainer"
-        android:src="@drawable/chucker_ic_up" />
+        android:visibility="gone"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:visibility="visible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

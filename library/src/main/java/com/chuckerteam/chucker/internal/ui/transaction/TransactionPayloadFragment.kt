@@ -30,8 +30,6 @@ import kotlinx.coroutines.cancel
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-private const val GET_FILE_FOR_SAVING_REQUEST_CODE: Int = 43
-
 internal class TransactionPayloadFragment :
     Fragment(), SearchView.OnQueryTextListener, FilterResultsCallback {
 
@@ -84,13 +82,11 @@ internal class TransactionPayloadFragment :
             }
         )
         payloadBinding.apply {
-            nextItem.setOnClickListener {
-                // Scroll to next item
-                Toast.makeText(requireContext(), "Next", Toast.LENGTH_SHORT).show()
+            searchResultsContainer.onNextClick {
+
             }
-            previousItem.setOnClickListener {
-                // Scroll to previous item
-                Toast.makeText(requireContext(), "Previous", Toast.LENGTH_SHORT).show()
+            searchResultsContainer.onPreviousClick {
+
             }
         }
     }
@@ -99,6 +95,7 @@ internal class TransactionPayloadFragment :
         super.onPause()
         payloadBinding.searchResultsContainer.visibility = View.GONE
     }
+
     override fun onDestroy() {
         super.onDestroy()
         uiScope.cancel()
@@ -111,22 +108,13 @@ internal class TransactionPayloadFragment :
         if (shouldShowSearchIcon(transaction)) {
             val searchMenuItem = menu.findItem(R.id.search)
             searchMenuItem.isVisible = true
-            searchMenuItem.setOnActionExpandListener(object : MenuItem.OnActionExpandListener {
-                override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-                    payloadBinding.searchResultsContainer.visibility = View.VISIBLE
-                    return true
-                }
+            searchMenuItem.setOnActionExpandListener(SearchExpandListener())
 
-                override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
-                    payloadBinding.searchResultsContainer.visibility = View.GONE
-                    return true
-                }
-            })
             val searchView = searchMenuItem.actionView as SearchView
             searchView.setOnQueryTextListener(this)
             searchView.setIconifiedByDefault(true)
             searchView.setOnCloseListener {
-                // Clear search
+                payloadBinding.searchResultsContainer.resetCounters()
                 return@setOnCloseListener false
             }
         }
@@ -319,7 +307,23 @@ internal class TransactionPayloadFragment :
 
     override fun onSearchDone(itemsCount: Int?) {
         itemsCount?.let { foundItems ->
-            // Do the magic
+            payloadBinding.searchResultsContainer.setOccurrencesCount(foundItems)
+            payloadBinding.searchResultsContainer.setCurrentItem(1)
+        }
+    }
+
+    inner class SearchExpandListener : MenuItem.OnActionExpandListener {
+        override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
+            payloadBinding.searchResultsContainer.apply {
+                resetCounters()
+                visibility = View.VISIBLE
+            }
+            return true
+        }
+
+        override fun onMenuItemActionCollapse(item: MenuItem?): Boolean {
+            payloadBinding.searchResultsContainer.visibility = View.GONE
+            return true
         }
     }
 
@@ -328,6 +332,7 @@ internal class TransactionPayloadFragment :
         private const val TRANSACTION_EXCEPTION = "Transaction not ready"
 
         private const val NUMBER_OF_IGNORED_SYMBOLS = 1
+        private const val GET_FILE_FOR_SAVING_REQUEST_CODE: Int = 43
 
         const val TYPE_REQUEST = 0
         const val TYPE_RESPONSE = 1
