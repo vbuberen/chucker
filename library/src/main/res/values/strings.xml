@@ -52,4 +52,5 @@
     <string name="chucker_binary_data">binary data</string>
     <string name="chucker_request_not_ready">The request isn\'t ready for sharing or saving</string>
     <string name="chucker_slash_divider">/</string>
+    <string name="chucker_nothing_found">Nothing found</string>
 </resources>

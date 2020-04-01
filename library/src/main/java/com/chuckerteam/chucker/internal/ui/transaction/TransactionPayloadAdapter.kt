@@ -1,5 +1,6 @@
 package com.chuckerteam.chucker.internal.ui.transaction
 
+import android.content.Context
 import android.graphics.Bitmap
 import android.text.SpannableStringBuilder
 import android.text.Spanned
@@ -8,11 +9,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Filter
 import android.widget.Filterable
+import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.chuckerteam.chucker.databinding.ChuckerTransactionItemBodyLineBinding
 import com.chuckerteam.chucker.databinding.ChuckerTransactionItemHeadersBinding
 import com.chuckerteam.chucker.databinding.ChuckerTransactionItemImageBinding
 import com.chuckerteam.chucker.internal.support.highlightWithDefinedColors
+import com.chuckerteam.chucker.R
 
 /**
  * Adapter responsible of showing the content of the Transaction Request/Response body.
@@ -20,9 +23,13 @@ import com.chuckerteam.chucker.internal.support.highlightWithDefinedColors
  * performances when loading big payloads.
  */
 internal class TransactionBodyAdapter(
+    context: Context,
     private val bodyItems: List<TransactionPayloadItem>,
-    private val onSearchDone: (Int?) -> Unit
+    private val onSearchDone: (ArrayList<Int>?) -> Unit
 ) : RecyclerView.Adapter<TransactionPayloadViewHolder>(), Filterable {
+
+    private val backgroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_primary)
+    private val foregroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_background)
 
     override fun onBindViewHolder(holder: TransactionPayloadViewHolder, position: Int) {
         holder.bind(bodyItems[position])
@@ -56,25 +63,6 @@ internal class TransactionBodyAdapter(
         }
     }
 
-    internal fun highlightQueryWithColors(newText: String, backgroundColor: Int, foregroundColor: Int) {
-        bodyItems.filterIsInstance<TransactionPayloadItem.BodyLineItem>()
-            .withIndex()
-            .forEach { (index, item) ->
-                if (item.line.contains(newText, ignoreCase = true)) {
-                    item.line.clearSpans()
-                    item.line = item.line.toString().highlightWithDefinedColors(newText, backgroundColor, foregroundColor)
-                    notifyItemChanged(index + 1)
-                } else {
-                    // Let's clear the spans if we haven't found the query string.
-                    val spans = item.line.getSpans(0, item.line.length - 1, Any::class.java)
-                    if (spans.isNotEmpty()) {
-                        item.line.clearSpans()
-                        notifyItemChanged(index + 1)
-                    }
-                }
-            }
-    }
-
     internal fun resetHighlight() {
         bodyItems.filterIsInstance<TransactionPayloadItem.BodyLineItem>()
             .withIndex()
@@ -99,7 +87,6 @@ internal class TransactionBodyAdapter(
                     .forEach { (index, item) ->
                         if (item.line.contains(constraint, ignoreCase = true)) {
                             matchingItems.add(index + 1)
-
                         }
                     }
             }
@@ -110,10 +97,20 @@ internal class TransactionBodyAdapter(
         }
 
         override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-            onSearchDone(results?.count)
+            resetHighlight()
+            val foundItems = results?.values as ArrayList<Int>
+            highlightAllFoundItems(constraint, foundItems)
+            onSearchDone(foundItems)
         }
     }
 
+    private fun highlightAllFoundItems(searchQuery: CharSequence?, items: ArrayList<Int>) {
+        items.forEach { itemIndex ->
+            val item = (bodyItems[itemIndex] as TransactionPayloadItem.BodyLineItem)
+            item.line = item.line.toString().highlightWithDefinedColors(searchQuery.toString(), backgroundSpanColorCurrent, foregroundSpanColorCurrent)
+            notifyItemChanged(itemIndex)
+        }
+    }
 
     companion object {
         private const val TYPE_HEADERS = 1

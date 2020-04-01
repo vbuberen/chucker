@@ -2,18 +2,20 @@ package com.chuckerteam.chucker.internal.ui.transaction
 
 import android.annotation.SuppressLint
 import android.app.Activity
-import android.content.Context
 import android.content.Intent
-import android.graphics.Color
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
 import android.text.SpannableStringBuilder
-import android.view.*
+import android.view.LayoutInflater
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.appcompat.widget.SearchView
-import androidx.core.content.ContextCompat
 import androidx.core.text.HtmlCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -36,10 +38,10 @@ internal class TransactionPayloadFragment :
     private lateinit var payloadBinding: ChuckerFragmentTransactionPayloadBinding
     private lateinit var payloadAdapter: TransactionBodyAdapter
 
-    private var backgroundSpanColor: Int = Color.YELLOW
-    private var foregroundSpanColor: Int = Color.RED
+    private var foundItemsPositions: ArrayList<Int> = arrayListOf()
+    private var currentlySelectedOccurrence: Int = INITIALLY_SELECTED_OCCURRENCE
 
-    private var type: Int = 0
+    private var type: Int = TYPE_REQUEST
 
     private lateinit var viewModel: TransactionViewModel
 
@@ -73,21 +75,48 @@ internal class TransactionPayloadFragment :
                 uiScope.launch {
                     showProgress()
                     val result = processPayload(type, transaction)
-                    payloadAdapter = TransactionBodyAdapter(result) {
+                    payloadAdapter = TransactionBodyAdapter(requireContext(), result) {
                         onSearchDone(it)
                     }
-                    payloadBinding.responseRecyclerView.adapter = payloadAdapter
+                    payloadBinding.payloadRecyclerView.adapter = payloadAdapter
                     hideProgress()
                 }
             }
         )
         payloadBinding.apply {
             searchResultsContainer.onNextClick {
-
+                if (foundItemsPositions.isEmpty()) return@onNextClick
+                updateIndexForNext()
+                showOccurrence()
             }
             searchResultsContainer.onPreviousClick {
-
+                if (foundItemsPositions.isEmpty()) return@onPreviousClick
+                updateIndexForPrevious()
+                showOccurrence()
             }
+        }
+    }
+
+    private fun updateIndexForNext() {
+        if (currentlySelectedOccurrence == foundItemsPositions.size) {
+            currentlySelectedOccurrence = INITIALLY_SELECTED_OCCURRENCE
+        } else {
+            currentlySelectedOccurrence += 1
+        }
+    }
+
+    private fun updateIndexForPrevious() {
+        if (currentlySelectedOccurrence == INITIALLY_SELECTED_OCCURRENCE) {
+            currentlySelectedOccurrence = foundItemsPositions.size
+        } else {
+            currentlySelectedOccurrence -= 1
+        }
+    }
+
+    private fun showOccurrence() {
+        payloadBinding.apply {
+            searchResultsContainer.setCurrentItem(currentlySelectedOccurrence)
+            payloadRecyclerView.scrollToPosition(foundItemsPositions[currentlySelectedOccurrence - 1])
         }
     }
 
@@ -113,10 +142,6 @@ internal class TransactionPayloadFragment :
             val searchView = searchMenuItem.actionView as SearchView
             searchView.setOnQueryTextListener(this)
             searchView.setIconifiedByDefault(true)
-            searchView.setOnCloseListener {
-                payloadBinding.searchResultsContainer.resetCounters()
-                return@setOnCloseListener false
-            }
         }
 
         if (shouldShowSaveIcon(transaction)) {
@@ -150,12 +175,6 @@ internal class TransactionPayloadFragment :
             (true == transaction?.isResponseBodyPlainText) && (0L != (transaction.responseContentLength))
         }
         else -> false
-    }
-
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-        backgroundSpanColor = ContextCompat.getColor(context, R.color.chucker_background_span_color)
-        foregroundSpanColor = ContextCompat.getColor(context, R.color.chucker_foreground_span_color)
     }
 
     @RequiresApi(Build.VERSION_CODES.KITKAT)
@@ -199,11 +218,13 @@ internal class TransactionPayloadFragment :
     override fun onQueryTextSubmit(query: String): Boolean = false
 
     override fun onQueryTextChange(newText: String): Boolean {
-        val adapter = (payloadBinding.responseRecyclerView.adapter as TransactionBodyAdapter)
+        val adapter = (payloadBinding.payloadRecyclerView.adapter as TransactionBodyAdapter)
         if (newText.isNotBlank() && newText.length > NUMBER_OF_IGNORED_SYMBOLS) {
             adapter.filter.filter(newText)
-            //adapter.highlightQueryWithColors(newText, backgroundSpanColor, foregroundSpanColor)
         } else {
+            currentlySelectedOccurrence = INITIALLY_SELECTED_OCCURRENCE
+            foundItemsPositions.clear()
+            payloadBinding.searchResultsContainer.resetCounters()
             adapter.resetHighlight()
         }
         return true
@@ -212,14 +233,14 @@ internal class TransactionPayloadFragment :
     private fun showProgress() {
         payloadBinding.apply {
             loadingProgress.visibility = View.VISIBLE
-            responseRecyclerView.visibility = View.INVISIBLE
+            payloadRecyclerView.visibility = View.INVISIBLE
         }
     }
 
     private fun hideProgress() {
         payloadBinding.apply {
             loadingProgress.visibility = View.INVISIBLE
-            responseRecyclerView.visibility = View.VISIBLE
+            payloadRecyclerView.visibility = View.VISIBLE
             requireActivity().invalidateOptionsMenu()
         }
     }
@@ -305,19 +326,22 @@ internal class TransactionPayloadFragment :
         }
     }
 
-    override fun onSearchDone(itemsCount: Int?) {
-        itemsCount?.let { foundItems ->
-            payloadBinding.searchResultsContainer.setOccurrencesCount(foundItems)
-            payloadBinding.searchResultsContainer.setCurrentItem(1)
+    override fun onSearchDone(itemsPositions: ArrayList<Int>?) {
+        if (!itemsPositions.isNullOrEmpty()) {
+            payloadBinding.searchResultsContainer.apply {
+                setOccurrencesCount(itemsPositions.size)
+                setCurrentItem(currentlySelectedOccurrence)
+            }
+            foundItemsPositions = itemsPositions
+            showOccurrence()
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.chucker_nothing_found), Toast.LENGTH_SHORT).show()
         }
     }
 
     inner class SearchExpandListener : MenuItem.OnActionExpandListener {
         override fun onMenuItemActionExpand(item: MenuItem?): Boolean {
-            payloadBinding.searchResultsContainer.apply {
-                resetCounters()
-                visibility = View.VISIBLE
-            }
+            payloadBinding.searchResultsContainer.visibility = View.VISIBLE
             return true
         }
 
@@ -333,6 +357,7 @@ internal class TransactionPayloadFragment :
 
         private const val NUMBER_OF_IGNORED_SYMBOLS = 1
         private const val GET_FILE_FOR_SAVING_REQUEST_CODE: Int = 43
+        private const val INITIALLY_SELECTED_OCCURRENCE = 1
 
         const val TYPE_REQUEST = 0
         const val TYPE_RESPONSE = 1
