@@ -86,13 +86,19 @@ internal class TransactionPayloadFragment :
         payloadBinding.apply {
             searchResultsContainer.onNextClick {
                 if (foundItemsPositions.isEmpty()) return@onNextClick
+                val previouslyHighlightedItem = foundItemsPositions[currentlySelectedOccurrence - 1]
                 updateIndexForNext()
+                val newlyHighlightedItem = foundItemsPositions[currentlySelectedOccurrence - 1]
                 showOccurrence()
+                payloadAdapter.highlightSelected(previouslyHighlightedItem, newlyHighlightedItem)
             }
             searchResultsContainer.onPreviousClick {
                 if (foundItemsPositions.isEmpty()) return@onPreviousClick
+                val previouslyHighlightedItem = foundItemsPositions[currentlySelectedOccurrence - 1]
                 updateIndexForPrevious()
+                val newlyHighlightedItem = foundItemsPositions[currentlySelectedOccurrence - 1]
                 showOccurrence()
+                payloadAdapter.highlightSelected(previouslyHighlightedItem, newlyHighlightedItem)
             }
         }
     }

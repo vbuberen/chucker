@@ -28,7 +28,9 @@ internal class TransactionBodyAdapter(
     private val onSearchDone: (ArrayList<Int>?) -> Unit
 ) : RecyclerView.Adapter<TransactionPayloadViewHolder>(), Filterable {
 
-    private val backgroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_primary)
+    private val backgroundSpanColorAll: Int = ContextCompat.getColor(context, R.color.chucker_color_primary)
+    private val foregroundSpanColorAll: Int = ContextCompat.getColor(context, R.color.chucker_color_background)
+    private val backgroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_error)
     private val foregroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_background)
 
     override fun onBindViewHolder(holder: TransactionPayloadViewHolder, position: Int) {
@@ -107,7 +109,25 @@ internal class TransactionBodyAdapter(
     private fun highlightAllFoundItems(searchQuery: CharSequence?, items: ArrayList<Int>) {
         items.forEach { itemIndex ->
             val item = (bodyItems[itemIndex] as TransactionPayloadItem.BodyLineItem)
-            item.line = item.line.toString().highlightWithDefinedColors(searchQuery.toString(), backgroundSpanColorCurrent, foregroundSpanColorCurrent)
+            item.line = item.line.toString().highlightWithDefinedColors(searchQuery.toString(), backgroundSpanColorAll, foregroundSpanColorAll)
+            notifyItemChanged(itemIndex)
+        }
+    }
+
+    fun highlightSelected(previouslyHighlightedItem: Int, newlyHighlightedItem: Int) {
+        replaceItemSpan(previouslyHighlightedItem, backgroundSpanColorAll, foregroundSpanColorAll)
+        replaceItemSpan(newlyHighlightedItem, backgroundSpanColorCurrent, foregroundSpanColorCurrent)
+    }
+
+    private fun replaceItemSpan(itemIndex: Int, backgroundColor: Int, foregroundColor: Int) {
+        val itemToUpdate = (bodyItems[itemIndex] as TransactionPayloadItem.BodyLineItem)
+        val previousSpans = itemToUpdate.line.getSpans(0, itemToUpdate.line.length - 1, Any::class.java)
+        if (previousSpans.isNotEmpty()) {
+            val spanStart = itemToUpdate.line.getSpanStart(previousSpans[0])
+            val spanEnd = itemToUpdate.line.getSpanEnd(previousSpans[0])
+            val searchQuery = itemToUpdate.line.subSequence(spanStart, spanEnd).toString()
+            itemToUpdate.line.clearSpans()
+            itemToUpdate.line = itemToUpdate.line.toString().highlightWithDefinedColors(searchQuery, backgroundColor, foregroundColor)
             notifyItemChanged(itemIndex)
         }
     }
