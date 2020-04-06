@@ -225,16 +225,18 @@ internal class TransactionPayloadFragment :
     override fun onQueryTextSubmit(query: String): Boolean = false
 
     override fun onQueryTextChange(newText: String): Boolean {
-        val adapter = (payloadBinding.payloadRecyclerView.adapter as TransactionBodyAdapter)
+        resetSearch()
         if (newText.isNotBlank() && newText.length > NUMBER_OF_IGNORED_SYMBOLS) {
-            adapter.filter.filter(newText)
-        } else {
-            currentlySelectedOccurrence = INITIALLY_SELECTED_OCCURRENCE
-            foundItemsPositions.clear()
-            payloadBinding.searchResultsContainer.resetCounters()
-            adapter.resetHighlight()
+            (payloadBinding.payloadRecyclerView.adapter as TransactionBodyAdapter).filter.filter(newText)
         }
         return true
+    }
+
+    private fun resetSearch() {
+        currentlySelectedOccurrence = INITIALLY_SELECTED_OCCURRENCE
+        foundItemsPositions.clear()
+        payloadBinding.searchResultsContainer.resetCounters()
+        (payloadBinding.payloadRecyclerView.adapter as TransactionBodyAdapter).resetHighlight()
     }
 
     private fun showProgress() {
