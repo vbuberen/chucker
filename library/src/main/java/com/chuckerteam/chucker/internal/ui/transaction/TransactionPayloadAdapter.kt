@@ -30,7 +30,7 @@ internal class TransactionBodyAdapter(
 
     private val backgroundSpanColorAll: Int = ContextCompat.getColor(context, R.color.chucker_color_primary)
     private val foregroundSpanColorAll: Int = ContextCompat.getColor(context, R.color.chucker_color_background)
-    private val backgroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_error)
+    private val backgroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_secondary)
     private val foregroundSpanColorCurrent: Int = ContextCompat.getColor(context, R.color.chucker_color_background)
 
     override fun onBindViewHolder(holder: TransactionPayloadViewHolder, position: Int) {
@@ -81,20 +81,24 @@ internal class TransactionBodyAdapter(
 
     inner class TransactionBodyFilter : Filter() {
         override fun performFiltering(constraint: CharSequence?): FilterResults {
-            val matchingItems = arrayListOf<Int>()
+            val matchingItemsPositions = arrayListOf<Int>()
 
             if (!constraint.isNullOrBlank() && constraint.length > 1) {
                 bodyItems.filterIsInstance<TransactionPayloadItem.BodyLineItem>()
                     .withIndex()
                     .forEach { (index, item) ->
                         if (item.line.contains(constraint, ignoreCase = true)) {
-                            matchingItems.add(index + 1)
+                            val matchingRegex = (constraint as String).toRegex(RegexOption.IGNORE_CASE)
+                            val occurrencesInItemLine = matchingRegex.findAll(item.line).count()
+                            repeat(occurrencesInItemLine) {
+                                matchingItemsPositions.add(index + 1)
+                            }
                         }
                     }
             }
             return FilterResults().apply {
-                values = matchingItems
-                count = matchingItems.size
+                values = matchingItemsPositions
+                count = matchingItemsPositions.size
             }
         }
 
