@@ -79,6 +79,7 @@ internal class TransactionPayloadFragment :
                         onSearchDone(it)
                     }
                     payloadBinding.payloadRecyclerView.adapter = payloadAdapter
+                    payloadBinding.payloadRecyclerView.setHasFixedSize(true)
                     hideProgress()
                 }
             }

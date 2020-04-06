@@ -42,8 +42,8 @@ repositories {
 
 ```groovy
 dependencies {
-  debugImplementation "com.github.ChuckerTeam.Chucker:library:3.1.2"
-  releaseImplementation "com.github.ChuckerTeam.Chucker:library-no-op:3.1.2"
+  debugImplementation "com.github.ChuckerTeam.Chucker:library:3.2.0"
+  releaseImplementation "com.github.ChuckerTeam.Chucker:library-no-op:3.2.0"
 }
 ```
 
@@ -127,30 +127,6 @@ You can redact headers that contain sensitive information by calling `redactHead
 
 ```kotlin
 interceptor.redactHeader("Auth-Token", "User-Session");
-```
-
-### Skip-Inspection ️🕵️
-
-If you need to selectively skip Chucker inspection on some endpoints or on particular requests you can add a special header - `Skip-ChuckerInterceptor: true`. This will inform Chucker to not process this request. Chucker will also strip this header from any request before sending it to a server.
-
-If you use `OkHttp` directly, create requests like below.
-
-```kotlin
-val request = Request.Builder().url(serverUrl)
-        .addHeader(Chucker.SKIP_INTERCEPTOR_HEADER_NAME, "true")
-        .build()
-
-client.newCall(request).execute()
-```
-
-If you are a `Retrofit` user you can configure it per endpoint like this.
-
-```kotlin
-fun Service {
-    @GET("/")
-    @Headers(Chucker.SKIP_INTERCEPTOR_HEADER)
-    fun networkRequest(): Unit
-}
 ```
 
 ## Migrating 🚗
