@@ -113,7 +113,7 @@ internal class TransactionBodyAdapter(
     private fun highlightAllFoundItems(searchQuery: CharSequence?, items: ArrayList<Int>) {
         items.forEach { itemIndex ->
             val item = (bodyItems[itemIndex] as TransactionPayloadItem.BodyLineItem)
-            item.line = item.line.toString().highlightWithDefinedColors(searchQuery.toString(), backgroundSpanColorAll, foregroundSpanColorAll)
+            item.line = item.line.highlightWithDefinedColors(searchQuery.toString(), backgroundSpanColorAll, foregroundSpanColorAll)
             notifyItemChanged(itemIndex)
         }
     }
@@ -131,7 +131,7 @@ internal class TransactionBodyAdapter(
             val spanEnd = itemToUpdate.line.getSpanEnd(previousSpans[0])
             val searchQuery = itemToUpdate.line.subSequence(spanStart, spanEnd).toString()
             itemToUpdate.line.clearSpans()
-            itemToUpdate.line = itemToUpdate.line.toString().highlightWithDefinedColors(searchQuery, backgroundColor, foregroundColor)
+            itemToUpdate.line = itemToUpdate.line.highlightWithDefinedColors(searchQuery, backgroundColor, foregroundColor)
             notifyItemChanged(itemIndex)
         }
     }
