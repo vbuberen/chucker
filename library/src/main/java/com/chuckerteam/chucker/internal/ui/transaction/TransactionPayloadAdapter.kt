@@ -111,7 +111,7 @@ internal class TransactionBodyAdapter(
     }
 
     private fun highlightAllFoundItems(searchQuery: CharSequence?, items: ArrayList<Int>) {
-        items.forEach { itemIndex ->
+        items.distinct().forEach { itemIndex ->
             val item = (bodyItems[itemIndex] as TransactionPayloadItem.BodyLineItem)
             item.line = item.line.highlightWithDefinedColors(searchQuery.toString(), backgroundSpanColorAll, foregroundSpanColorAll)
             notifyItemChanged(itemIndex)
