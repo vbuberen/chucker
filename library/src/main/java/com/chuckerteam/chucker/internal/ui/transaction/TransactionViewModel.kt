@@ -13,8 +13,7 @@ internal class TransactionViewModel(
     transactionId: Long
 ) : ViewModel() {
 
-    private val mutableEncodeUrl = MutableLiveData<Boolean>(false)
-
+    private val mutableEncodeUrl = MutableLiveData(false)
     val encodeUrl: LiveData<Boolean> = mutableEncodeUrl
 
     val transactionTitle: LiveData<String> = RepositoryProvider.transaction()
@@ -36,7 +35,8 @@ internal class TransactionViewModel(
     val doesRequestBodyRequireEncoding: LiveData<Boolean> = RepositoryProvider.transaction()
         .getTransaction(transactionId)
         .map { transaction ->
-            transaction?.requestContentType?.contains("x-www-form-urlencoded", ignoreCase = true) ?: false
+            transaction?.requestContentType?.contains("x-www-form-urlencoded", ignoreCase = true)
+                ?: false
         }
 
     val transaction: LiveData<HttpTransaction?> = RepositoryProvider.transaction().getTransaction(transactionId)
