@@ -1,0 +1,48 @@
+# Project information
+site_name: Chucker
+site_description: A network inspection library
+site_author: Chucker Team
+site_url: https://vbuberen.github.io/chucker/
+
+# Repository
+repo_name: Chucker
+repo_url: https://github.com/vbuberen/chucker
+
+# Copyright
+copyright: Copyright &copy; 2018-2020 Chucker Team.
+
+# Configuration
+theme:
+  name: material
+  language: en
+  palette:
+    primary: indigo
+    accent: indigo
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+
+## Navigation
+
+nav:
+  - 'Overview': index.md
+  - 'Getting started': getting_started.md
+  - 'Advanced configuration': configuration.md
+  - 'Changelog': changelog.md
+  - 'Migrations':
+      - 'From Chucker 2.0': migrations/migrating_from_2.0.md
+      - 'From Chuck': migrations/migrating_from_chuck.md
+  - 'Snapshots': snapshots.md
+#  - 'API':
+  - 'FAQ': faq.md
+  - 'Contributing': contibuting.md
+  - 'Team': team.md
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true
