@@ -34,7 +34,7 @@ nav:
       - 'From Chucker 2.0': migrations/migrating_from_2.0.md
       - 'From Chuck': migrations/migrating_from_chuck.md
   - 'Snapshots': snapshots.md
-#  - 'API':
+  - 'API': api/library/index.html
   - 'FAQ': faq.md
   - 'Contributing': contibuting.md
   - 'Team': team.md
