@@ -22,10 +22,6 @@ dokkaJavadoc {
     }
 }
 
-dokkaGfm {
-    outputDirectory = new File(rootDir, "docs/api")
-}
-
 task javadocJar(type: Jar, dependsOn: dokka) {
     archiveClassifier.set('javadoc')
     from dokka.outputDirectory
