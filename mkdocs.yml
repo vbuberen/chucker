@@ -38,7 +38,7 @@ nav:
       - 'From Chuck': migrations/migrating_from_chuck.md
   - 'Snapshots': snapshots.md
   - 'FAQ': faq.md
-  - 'Contributing': contibuting.md
+  - 'Contributing': contributing.md
   - 'Team': team.md
 
 # Extensions
