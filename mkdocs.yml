@@ -1,0 +1,56 @@
+# Project information
+site_name: Chucker
+site_description: A network inspection library
+site_author: Chucker Team
+site_url: https://vbuberen.github.io/chucker/
+remote_branch: gh_pages
+
+# Repository
+repo_name: Chucker
+repo_url: https://github.com/vbuberen/chucker
+
+# Copyright
+copyright: Copyright &copy; 2018-2020 Chucker Team.
+
+# Configuration
+theme:
+  name: material
+  language: en
+  favicon: 'assets/favicon.svg'
+  logo: 'assets/logo.svg'
+  palette:
+    primary: indigo
+    accent: green
+  font:
+    text: Roboto
+    code: Roboto Mono
+
+# Footer
+extra:
+  social:
+    - icon: fontawesome/brands/slack
+      name: Chucker channel in Slack
+      link: https://kotlinlang.slack.com/archives/CRWD6370R
+
+## Navigation
+
+nav:
+  - 'Overview': index.md
+  - 'Getting started': getting_started.md
+  - 'Advanced configuration': configuration.md
+  - 'Changelog': changelog.md
+  - 'Migrations':
+      - 'From Chucker 2.0': migrations/migrating_from_2.0.md
+      - 'From Chuck': migrations/migrating_from_chuck.md
+  - 'Snapshots': snapshots.md
+  - 'FAQ': faq.md
+  - 'Contributing': contributing.md
+  - 'Team': team.md
+
+# Extensions
+markdown_extensions:
+  - admonition
+  - codehilite:
+      guess_lang: false
+  - toc:
+      permalink: true

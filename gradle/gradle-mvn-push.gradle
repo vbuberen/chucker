@@ -22,7 +22,6 @@ dokkaJavadoc {
     }
 }
 
-
 task javadocJar(type: Jar, dependsOn: dokka) {
     archiveClassifier.set('javadoc')
     from dokka.outputDirectory
