@@ -2,9 +2,7 @@ Chucker simplifies the inspection of **HTTP(S) requests/responses**, and **Throw
 
 Apps using Chucker will display a **push notification** showing a summary of ongoing HTTP activity and Throwables. Tapping on the notification launches the full Chucker UI. Apps can optionally suppress the notification, and launch the Chucker UI directly from within their own interface.
 
-| HTTP Calls | Throwables |
-| --- | --- |
-| ![Chucker HTTP transactions](assets/chucker-http.gif) | ![Chucker errors](assets/chucker-error.gif) |
+![Chucker HTTP transactions](assets/chucker-http.gif)
 
 ## Features 🧰
 

@@ -16,6 +16,8 @@ copyright: Copyright &copy; 2018-2020 Chucker Team.
 theme:
   name: material
   language: en
+  favicon: 'assets/favicon.svg'
+  logo: 'assets/logo.svg'
   palette:
     primary: indigo
     accent: indigo
@@ -27,7 +29,7 @@ theme:
 ## Navigation
 
 nav:
-  - 'Overview': index.md
+  - 'Chucker': index.md
   - 'Getting started': getting_started.md
   - 'Advanced configuration': configuration.md
   - 'Changelog': changelog.md
@@ -35,7 +37,6 @@ nav:
       - 'From Chucker 2.0': migrations/migrating_from_2.0.md
       - 'From Chuck': migrations/migrating_from_chuck.md
   - 'Snapshots': snapshots.md
-  - 'API': api/library/index.html
   - 'FAQ': faq.md
   - 'Contributing': contibuting.md
   - 'Team': team.md

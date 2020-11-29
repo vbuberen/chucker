@@ -1,15 +1,14 @@
-
 #!/bin/bash
 
-# Clean any previous Dokka docs.
-rm -rf docs/api
-
-# Build the coil-base docs.
-./gradlew clean :library:dokkaGfm :library-no-op:dokkaGfm
-
-# Work around Dokka failing to link against external links generated from 'gfm' sources.
-cp docs/api/library/package-list package-list-coil-base
-sed -i '' 's/$dokka.linkExtension:md/$dokka.linkExtension:html/g' package-list-coil-base
+# Copy outside files into the docs folder.
+sed -e '/full documentation here/ { N; d; }' < README.md > docs/index.md
+cp CHANGELOG.md docs/changelog.md
+cp coil-gif/README.md docs/gifs.md
+cp coil-svg/README.md docs/svgs.md
+cp coil-video/README.md docs/videos.md
+cp logo.svg docs/logo.svg
+cp README-ko.md docs/README-ko.md
+cp README-zh.md docs/README-zh.md
 
 # Clean up.
 rm package-list-coil-base package-list-okio
