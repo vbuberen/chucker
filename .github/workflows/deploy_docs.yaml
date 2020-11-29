@@ -7,7 +7,6 @@ on:
 
 jobs:
   deploy_docs:
-    if: ${{ github.repository == 'ChuckerTeam/chucker'}}
     runs-on: [ubuntu-latest]
 
     steps:
