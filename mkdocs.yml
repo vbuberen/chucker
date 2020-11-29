@@ -3,6 +3,7 @@ site_name: Chucker
 site_description: A network inspection library
 site_author: Chucker Team
 site_url: https://vbuberen.github.io/chucker/
+remote_branch: gh_pages
 
 # Repository
 repo_name: Chucker
