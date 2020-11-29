@@ -20,11 +20,17 @@ theme:
   logo: 'assets/logo.svg'
   palette:
     primary: indigo
-    accent: indigo
+    accent: green
   font:
     text: Roboto
     code: Roboto Mono
 
+# Footer
+extra:
+  social:
+    - icon: fontawesome/brands/slack
+      name: Chucker channel in Slack
+      link: https://kotlinlang.slack.com/archives/CRWD6370R
 
 ## Navigation
 
