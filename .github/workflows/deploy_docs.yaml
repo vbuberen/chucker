@@ -7,7 +7,6 @@ on:
 
 jobs:
   deploy_docs:
-    if: ${{ github.repository == 'ChuckerTeam/chucker'}}
     runs-on: [ubuntu-latest]
 
     steps:
@@ -16,3 +15,9 @@ jobs:
 
       - name: Generate docs
         run: ./assemble_docs.sh
+
+      - name: Publish MkDocs
+        uses: mhausenblas/mkdocs-deploy-gh-pages@master
+        env:
+          CONFIG_FILE: ./mkdocs.yml
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
