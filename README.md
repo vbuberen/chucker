@@ -11,7 +11,6 @@ _A fork of [Chuck](https://github.com/jgilfelt/chuck)_
 * [Features](#features-)
   * [Multi-Window](#multi-window-)
 * [Configure](#configure-)
-  * [Throwables](#throwables-️)
   * [Redact-Header️](#redact-header-️)
 * [Migrating](#migrating-)
 * [Snapshots](#snapshots-)
@@ -21,13 +20,13 @@ _A fork of [Chuck](https://github.com/jgilfelt/chuck)_
 * [Acknowledgments](#acknowledgments-)
 * [License](#license-)
 
-Chucker simplifies the inspection of **HTTP(S) requests/responses**, and **Throwables** fired by your Android App. Chucker works as an **OkHttp Interceptor** persisting all those events inside your application, and providing a UI for inspecting and sharing their content.
+Chucker simplifies the inspection of **HTTP(S) requests/responses** fired by your Android App. Chucker works as an **OkHttp Interceptor** persisting all those events inside your application, and providing a UI for inspecting and sharing their content.
 
-Apps using Chucker will display a **push notification** showing a summary of ongoing HTTP activity and Throwables. Tapping on the notification launches the full Chucker UI. Apps can optionally suppress the notification, and launch the Chucker UI directly from within their own interface.
+Apps using Chucker will display a **push notification** showing a summary of ongoing HTTP activity. Tapping on the notification launches the full Chucker UI. Apps can optionally suppress the notification, and launch the Chucker UI directly from within their own interface.
 
-| HTTP Calls | Throwables |
-| --- | --- |
-| ![Chucker HTTP transactions](assets/chucker-http.gif) | ![Chucker errors](assets/chucker-error.gif) |
+<p align="center">
+  <img src="assets/chucker-http.gif" alt="chucker http sample" width="50%"/>
+</p>
 
 ## Getting Started 👣
 
@@ -50,6 +49,20 @@ val client = OkHttpClient.Builder()
                 .build()
 ```
 
+[Enable Java 8 support](https://developer.android.com/studio/write/java8-support).
+
+```groovy
+android {
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  // For Kotlin projects add also this line
+  kotlinOptions.jvmTarget = "1.8"
+}
+```
+
 **That's it!** 🎉 Chucker will now record all HTTP interactions made by your OkHttp client.
 
 Historically, Chucker was distributed through JitPack. 
@@ -60,7 +73,7 @@ You can find older version of Chucker here: [![JitPack](https://jitpack.io/v/Chu
 Don't forget to check the [changelog](CHANGELOG.md) to have a look at all the changes in the latest version of Chucker.
 
 * Compatible with **OkHTTP 4**
-* **API >= 16** compatible
+* **API >= 21** compatible
 * Easy to integrate (just 2 gradle `implementation` lines).
 * Works **out of the box**, no customization needed.
 * **Empty release artifact** 🧼 (no traces of Chucker in your final APK).
@@ -100,26 +113,11 @@ val chuckerInterceptor = ChuckerInterceptor.Builder(context)
         // is closed before being read like in Retrofit with Void and Unit types.
         .alwaysReadResponseBody(true)
         .build()
-)
 
 // Don't forget to plug the ChuckerInterceptor inside the OkHttpClient
 val client = OkHttpClient.Builder()
         .addInterceptor(chuckerInterceptor)
         .build()
-```
-
-### Throwables (Deprected) ☄️
-
-#### Warning: This functionality will be unavailable in 4.x release. Details in [this issue](https://github.com/ChuckerTeam/chucker/issues/321#issuecomment-626138370)
-
-Chucker can also collect and display **Throwables** of your application. To inform Chucker that a `Throwable` was fired you need to call the `onError` method of the `ChuckerCollector` (you need to retain an instance of your collector):
-
-```kotlin
-try {
-    // Do something risky
-} catch (IOException exception) {
-    chuckerCollector.onError("TAG", exception)
-}
 ```
 
 ### Redact-Header 👮‍♂️
@@ -179,6 +177,10 @@ If you're looking for the **latest stable version**, you can always find it in `
 * Why are my encoded request/response bodies not appearing as plain text?
 
 Please refer to [this section of the OkHttp documentation](https://square.github.io/okhttp/interceptors/). You can choose to use Chucker as either an application or network interceptor, depending on your requirements.
+
+* Why Android < 21 is no longer supported?
+
+In order to keep up with the changes in OkHttp we decided to bump its version in `4.x` release. Chucker `3.4.x` supports Android 16+ but its active development stopped and only bug fixes and minor improvements will land on [3.x branch](https://github.com/ChuckerTeam/chucker/tree/3.x) till March 2021.
 
 ## Contributing 🤝
 
