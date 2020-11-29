@@ -17,6 +17,20 @@ val client = OkHttpClient.Builder()
                 .build()
 ```
 
+[Enable Java 8 support](https://developer.android.com/studio/write/java8-support).
+
+```groovy
+android {
+  compileOptions {
+    sourceCompatibility JavaVersion.VERSION_1_8
+    targetCompatibility JavaVersion.VERSION_1_8
+  }
+
+  // For Kotlin projects add also this line
+  kotlinOptions.jvmTarget = "1.8"
+}
+```
+
 **That's it!** 🎉 Chucker will now record all HTTP interactions made by your OkHttp client.
 
 Historically, Chucker was distributed through JitPack.

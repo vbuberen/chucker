@@ -29,7 +29,7 @@ theme:
 ## Navigation
 
 nav:
-  - 'Chucker': index.md
+  - 'Overview': index.md
   - 'Getting started': getting_started.md
   - 'Advanced configuration': configuration.md
   - 'Changelog': changelog.md
