@@ -13,9 +13,6 @@ jobs:
       - name: Checkout Repo
         uses: actions/checkout@v2
 
-      - name: Generate docs
-        run: ./assemble_docs.sh
-
       - name: Publish MkDocs
         uses: mhausenblas/mkdocs-deploy-gh-pages@master
         env:
