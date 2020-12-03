@@ -10,7 +10,7 @@ Apps using Chucker will display a **push notification** showing a summary of ong
 
 ## Features 🧰
 
-Don't forget to check the [changelog](CHANGELOG.md) to have a look at all the changes in the latest version of Chucker.
+Don't forget to check the [changelog](changelog.md) to have a look at all the changes in the latest version of Chucker.
 
 * Compatible with **OkHTTP 4**
 * **API >= 21** compatible
