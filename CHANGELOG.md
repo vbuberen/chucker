@@ -14,7 +14,7 @@ Please add your entries according to this format.
 
 * Updated OkHttp to 4.9.0
 
-## Version 3.4.0 *(2020-11-05)*
+## [Version 3.4.0] *(2020-11-05)*
 
 ### Added
 
@@ -38,10 +38,10 @@ Please add your entries according to this format.
 
 * `ChuckerInterceptor` constructor is now deprecated. Unless `Context` is the only parameter that you pass into the constructor you should migrate to builder.
 
-## Version 3.3.0 *(2020-09-30)*
+## [Version 3.3.0] *(2020-09-30)*
 
-This is a new minor release with multiple fixes and improvements. 
-After this release we are starting to work on a new major release 4.x with minSDK 21. 
+This is a new minor release with multiple fixes and improvements.
+After this release we are starting to work on a new major release 4.x with minSDK 21.
 Bumping minSDK to 21 is required to keep up with [newer versions of OkHttp](https://medium.com/square-corner-blog/okhttp-3-13-requires-android-5-818bb78d07ce).
 Versions 3.x will be supported for 6 months (till March 2021) getting bugfixes and minor improvements.
 
@@ -49,7 +49,7 @@ Versions 3.x will be supported for 6 months (till March 2021) getting bugfixes a
 
 * Added a new flag `alwaysReadResponseBody` into Chucker configuration to read the whole response body even if consumer fails to consume it.
 * Added port numbers as part of the URL. Numbers appear if they are different from default 80 or 443.
-* Chucker now shows partially read application responses properly. Earlier in 3.2.0 such responses didn't appear in the UI. 
+* Chucker now shows partially read application responses properly. Earlier in 3.2.0 such responses didn't appear in the UI.
 * Transaction size is defined by actual payload size now, not by `Content-length` header.
 * Added empty state UI for payloads, so no more guessing if there is some error or the payload is really empty.
 * Added ability to export list of transactions.
@@ -99,7 +99,7 @@ This release was possible thanks to the contribution of:
 @vbuberen
 @psh
 
-## Version 3.2.0 *(2020-04-04)*
+## [Version 3.2.0] *(2020-04-04)*
 
 This is a new minor release with numerous internal changes.
 
@@ -151,7 +151,7 @@ This release was possible thanks to the contribution of:
 @technoir42
 @vbuberen
 
-## Version 3.1.2 *(2020-02-09)*
+## [Version 3.1.2] *(2020-02-09)*
 
 This is hot-fix release to fix multiple issues introduced in `3.1.0`.
 
@@ -174,7 +174,7 @@ This release was possible thanks to the contribution of:
 @MiSikora
 @vbuberen
 
-## Version 3.1.1 *(2020-01-25)*
+## [Version 3.1.1] *(2020-01-25)*
 
 This is hot-fix release to fix issue introduced in `3.1.0`.
 
@@ -188,11 +188,11 @@ This release was possible thanks to the contribution of:
 
 @cortinico
 
-## Version 3.1.0 *(2020-01-24)*
+## [Version 3.1.0] *(2020-01-24)*
 
 ### This version shouldn't be used as dependency due to [#203](https://github.com/ChuckerTeam/chucker/issues/203). Use 3.1.1 instead.
 
-This is a new minor release of Chucker. Please note that this minor release contains multiple new features (see below) as well as multiple bugfixes. 
+This is a new minor release of Chucker. Please note that this minor release contains multiple new features (see below) as well as multiple bugfixes.
 
 ### Summary of Changes
 
@@ -229,11 +229,11 @@ This is a new minor release of Chucker. Please note that this minor release cont
 This release was possible thanks to the contribution of:
 
 @christopherniksch
-@yoavst 
+@yoavst
 @psh
 @kmayoral
 @vbuberen
-@dcampogiani 
+@dcampogiani
 @ullas-jain
 @rakshit444
 @olivierperez
@@ -243,11 +243,11 @@ This release was possible thanks to the contribution of:
 @koral--
 @redwarp
 @uOOOO
-@sprohaszka 
-@PaulWoitaschek 
+@sprohaszka
+@PaulWoitaschek
 
 
-## Version 3.0.1 *(2019-08-16)*
+## [Version 3.0.1] *(2019-08-16)*
 
 This is a hotfix release for Chucker `3.0.0`.
 
@@ -259,7 +259,7 @@ This is a hotfix release for Chucker `3.0.0`.
 
 This release was possible thanks to the contribution of: @redwarp
 
-## Version 3.0.0 *(2019-08-12)*
+## [Version 3.0.0] *(2019-08-12)*
 
 This is a new major release of Chucker. Please note that this major release contains multiple new features (see below) as well as several breaking changes. Please refer to the [migration guide](/docs/migrating-from-2.0.md) if you need support in migrating from `2.x` -> `3.0.0` or feel free to open an issue.
 
@@ -289,11 +289,11 @@ This release was possible thanks to the contribution of:
 @redwarp
 @uOOOO
 
-## Version 2.0.4 *(2019-05-18)*
+## [Version 2.0.4] *(2019-05-18)*
 
  * Fix: [#27] no-op Chuck#init method is missing
 
-## Version 2.0.3 *(2018-11-28)*
+## [Version 2.0.3] *(2018-11-28)*
 
  * Fix: [#20] Changed SqLite DB Version Number 3 -> 4
 
@@ -345,6 +345,17 @@ This release was possible thanks to the contribution of:
 ## Version 1.0.0 *(2017-02-07)*
 
 Initial release.
+
+[Version 3.4.0]: https://github.com/ChuckerTeam/chucker/releases/tag/3.4.0
+[Version 3.3.0]: https://github.com/ChuckerTeam/chucker/releases/tag/3.3.0
+[Version 3.2.0]: https://github.com/ChuckerTeam/chucker/releases/tag/3.2.0
+[Version 3.1.2]: https://github.com/ChuckerTeam/chucker/releases/tag/3.1.2
+[Version 3.1.1]: https://github.com/ChuckerTeam/chucker/releases/tag/3.1.1
+[Version 3.1.0]: https://github.com/ChuckerTeam/chucker/releases/tag/3.1.0
+[Version 3.0.1]: https://github.com/ChuckerTeam/chucker/releases/tag/3.0.1
+[Version 3.0.0]: https://github.com/ChuckerTeam/chucker/releases/tag/3.0.0
+[Version 2.0.4]: https://github.com/ChuckerTeam/chucker/releases/tag/2.0.4
+[Version 2.0.3]: https://github.com/ChuckerTeam/chucker/releases/tag/2.0.3
 
 [#4]: https://github.com/ChuckerTeam/chucker/pull/4
 [#5]: https://github.com/ChuckerTeam/chucker/pull/5
