@@ -46,7 +46,7 @@ nav:
   - 'FAQ': faq.md
   - 'Contributing': contributing.md
   - 'Team': team.md
-  - 'Docs': kdoc/library/index.md
+  - 'Docs': kdoc/index.md
 
 # Extensions
 markdown_extensions:
