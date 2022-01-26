@@ -1,9 +1,24 @@
 # Change Log
 
-This file follows [Keepachangelog](https://keepachangelog.com/) format. 
+This file follows [Keepachangelog](https://keepachangelog.com/) format.
 Please add your entries according to this format.
 
 ## Unreleased
+
+### Added
+* Decoding of request and response bodies can now be customized. In order to do this a `BodyDecoder` interface needs to be implemented and installed in the `ChuckerInterceptor` via `ChuckerInterceptor.addBinaryDecoder(decoder)` method. Decoded bodies are then displayed in the Chucker UI.
+* Create dynamic shortcut when `ChuckerInterceptor` added. Users can opt out of this feature using `createShortcut(false)` in `ChuckerInterceptor.Builder`
+* Brotli compression support
+* Added ability to export list of transactions as .har file.
+* Added ability to save single transaction as .har file.
+
+### Fixed
+
+* Fixed request headers not being redacted in case of failures [#545].
+* Fixed wrongful processing of one shot and duplex requests [#544].
+* Fixed writing to database on the main thread [#487].
+* Fixed RTL issue in payload view
+* Fixed StrictMode ThreadPolicy violations [#737]
 
 ### Removed
 
@@ -12,7 +27,32 @@ Please add your entries according to this format.
 
 ### Changed
 
-* Updated OkHttp to 4.9.0
+* Updated OkHttp to 4.9.1
+
+## Version 3.5.2 *(2021-07-28)*
+
+This release is a re-deployment of 3.5.1, since 3.5.1 `aar` didn't upload properly on Maven Central.
+
+## Version 3.5.1 *(2021-07-19)*
+
+Note: this release wasn't properly uploaded to Maven Central, so update to a newer verion is required.
+
+### Fixed
+
+* Fix crash on Android 12 due to missing immutability flags in deprecated error reporting feature [#653].
+
+## Version 3.5.0 *(2021-06-29)*
+
+Note: this release has issue with Android 12 support, so update to 3.5.2 is highly recommended.
+
+### Added
+
+* Android 12 support.
+
+### Fixed
+
+* Fix crash on Android 12 due to missing immutability flags [#593].
+* Fix not setting request body type correctly [#538].
 
 ## [Version 3.4.0] *(2020-11-05)*
 
@@ -488,3 +528,10 @@ Initial release.
 [#465]: https://github.com/ChuckerTeam/chucker/issues/465
 [#472]: https://github.com/ChuckerTeam/chucker/issues/472
 [#480]: https://github.com/ChuckerTeam/chucker/issues/480
+[#487]: https://github.com/ChuckerTeam/chucker/issues/487
+[#538]: https://github.com/ChuckerTeam/chucker/issues/538
+[#544]: https://github.com/ChuckerTeam/chucker/issues/544
+[#545]: https://github.com/ChuckerTeam/chucker/issues/545
+[#593]: https://github.com/ChuckerTeam/chucker/issues/593
+[#653]: https://github.com/ChuckerTeam/chucker/pull/653
+[#737]: https://github.com/ChuckerTeam/chucker/issues/737

@@ -1,5 +1,10 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.squareup.wire'
+
+wire {
+    kotlin {}
+}
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
@@ -13,7 +18,8 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        viewBinding true
+        buildConfig = false
     }
 
     buildTypes {
@@ -41,6 +47,9 @@ android {
     lintOptions {
         warningsAsErrors true
         abortOnError true
+        disable 'AcceptsUserCertificates'
+        // Don't fail build if some dependencies outdated
+        disable 'GradleDependency'
     }
 
     compileOptions {
@@ -48,7 +57,9 @@ android {
         targetCompatibility JavaVersion.VERSION_1_8
     }
 
-    kotlinOptions.jvmTarget = "1.8"
+    kotlinOptions {
+        jvmTarget = "1.8"
+    }
 }
 
 dependencies {

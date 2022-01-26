@@ -15,6 +15,7 @@ android {
     defaultConfig {
         minSdkVersion rootProject.minSdkVersion
         consumerProguardFiles 'proguard-rules.pro'
+        resValue("string", "chucker_version", "$VERSION_NAME")
     }
 
     kotlinOptions {
@@ -22,7 +23,8 @@ android {
     }
 
     buildFeatures {
-        viewBinding = true
+        viewBinding true
+        buildConfig = false
     }
 
     lintOptions {
@@ -30,6 +32,8 @@ android {
         abortOnError true
         // We don't want to impose RTL on consuming applications.
         disable 'RtlEnabled'
+        // Don't fail build if some dependencies outdated
+        disable 'GradleDependency'
     }
 
     testOptions {
@@ -51,6 +55,7 @@ dependencies {
     implementation "androidx.constraintlayout:constraintlayout:$constraintLayoutVersion"
     implementation "androidx.palette:palette-ktx:$paletteKtxVersion"
 
+    implementation "androidx.activity:activity-ktx:$activityVersion"
     implementation "androidx.fragment:fragment-ktx:$fragmentVersion"
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycleVersion"
     implementation "androidx.lifecycle:lifecycle-livedata-ktx:$lifecycleVersion"
@@ -58,19 +63,22 @@ dependencies {
     implementation "androidx.room:room-runtime:$roomVersion"
     kapt "androidx.room:room-compiler:$roomVersion"
 
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutineVersion"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutineVersion"
 
     implementation "com.google.code.gson:gson:$gsonVersion"
-    api "com.squareup.okhttp3:okhttp:$okhttpVersion"
+
+    implementation "org.brotli:dec:$brotliVersion"
+
+    api platform("com.squareup.okhttp3:okhttp-bom:$okhttpVersion")
+    api "com.squareup.okhttp3:okhttp"
+    testImplementation "com.squareup.okhttp3:mockwebserver"
 
     testImplementation "org.junit.jupiter:junit-jupiter-api:$junitVersion"
     testRuntimeOnly "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
-    testImplementation "junit:junit:$vintageJunitVersion"
-    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$vintageJunitVersion"
+    testImplementation "junit:junit:$junit4Version"
+    testRuntimeOnly "org.junit.vintage:junit-vintage-engine:$junitVersion"
     testImplementation "org.junit.jupiter:junit-jupiter-params:$junitVersion"
     testImplementation "io.mockk:mockk:$mockkVersion"
-    testImplementation "com.squareup.okhttp3:mockwebserver:$okhttpVersion"
     testImplementation "androidx.test:core:$androidxTestCoreVersion"
     testImplementation "androidx.arch.core:core-testing:$androidXCoreVersion"
     testImplementation "com.google.truth:truth:$truthVersion"
