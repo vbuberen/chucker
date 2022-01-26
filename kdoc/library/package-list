@@ -1,0 +1,36 @@
+$dokka.format:html-v1
+$dokka.linkExtension:html
+$dokka.location:com.chuckerteam.chucker.api////PointingToDeclaration/library/com.chuckerteam.chucker.api/index.html
+$dokka.location:com.chuckerteam.chucker.api/BodyDecoder///PointingToDeclaration/library/com.chuckerteam.chucker.api/-body-decoder/index.html
+$dokka.location:com.chuckerteam.chucker.api/BodyDecoder/decodeRequest/#okhttp3.Request#okio.ByteString/PointingToDeclaration/library/com.chuckerteam.chucker.api/-body-decoder/decode-request.html
+$dokka.location:com.chuckerteam.chucker.api/BodyDecoder/decodeResponse/#okhttp3.Response#okio.ByteString/PointingToDeclaration/library/com.chuckerteam.chucker.api/-body-decoder/decode-response.html
+$dokka.location:com.chuckerteam.chucker.api/Chucker///PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker/index.html
+$dokka.location:com.chuckerteam.chucker.api/Chucker/dismissNotifications/#android.content.Context/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker/dismiss-notifications.html
+$dokka.location:com.chuckerteam.chucker.api/Chucker/getLaunchIntent/#android.content.Context/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker/get-launch-intent.html
+$dokka.location:com.chuckerteam.chucker.api/Chucker/isOp/#/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker/is-op.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerCollector///PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-collector/index.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerCollector/ChuckerCollector/#android.content.Context#kotlin.Boolean#com.chuckerteam.chucker.api.RetentionManager.Period/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-collector/-chucker-collector.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerCollector/showNotification/#/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-collector/show-notification.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder///PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/index.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/Builder/#android.content.Context/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/-builder.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/addBodyDecoder/#com.chuckerteam.chucker.api.BodyDecoder/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/add-body-decoder.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/alwaysReadResponseBody/#kotlin.Boolean/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/always-read-response-body.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/build/#/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/build.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/collector/#com.chuckerteam.chucker.api.ChuckerCollector/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/collector.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/createShortcut/#kotlin.Boolean/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/create-shortcut.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/maxContentLength/#kotlin.Long/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/max-content-length.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/redactHeaders/#kotlin.Array[kotlin.String]/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/redact-headers.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor.Builder/redactHeaders/#kotlin.collections.Iterable[kotlin.String]/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-builder/redact-headers.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor///PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/index.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor/ChuckerInterceptor/#android.content.Context/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/-chucker-interceptor.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor/intercept/#okhttp3.Interceptor.Chain/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/intercept.html
+$dokka.location:com.chuckerteam.chucker.api/ChuckerInterceptor/redactHeader/#kotlin.Array[kotlin.String]/PointingToDeclaration/library/com.chuckerteam.chucker.api/-chucker-interceptor/redact-header.html
+$dokka.location:com.chuckerteam.chucker.api/RetentionManager.Period.FOREVER///PointingToDeclaration/library/com.chuckerteam.chucker.api/-retention-manager/-period/-f-o-r-e-v-e-r/index.html
+$dokka.location:com.chuckerteam.chucker.api/RetentionManager.Period.ONE_DAY///PointingToDeclaration/library/com.chuckerteam.chucker.api/-retention-manager/-period/-o-n-e_-d-a-y/index.html
+$dokka.location:com.chuckerteam.chucker.api/RetentionManager.Period.ONE_HOUR///PointingToDeclaration/library/com.chuckerteam.chucker.api/-retention-manager/-period/-o-n-e_-h-o-u-r/index.html
+$dokka.location:com.chuckerteam.chucker.api/RetentionManager.Period.ONE_WEEK///PointingToDeclaration/library/com.chuckerteam.chucker.api/-retention-manager/-period/-o-n-e_-w-e-e-k/index.html
+$dokka.location:com.chuckerteam.chucker.api/RetentionManager.Period///PointingToDeclaration/library/com.chuckerteam.chucker.api/-retention-manager/-period/index.html
+$dokka.location:com.chuckerteam.chucker.api/RetentionManager///PointingToDeclaration/library/com.chuckerteam.chucker.api/-retention-manager/index.html
+$dokka.location:com.chuckerteam.chucker.api/RetentionManager/RetentionManager/#android.content.Context#com.chuckerteam.chucker.api.RetentionManager.Period/PointingToDeclaration/library/com.chuckerteam.chucker.api/-retention-manager/-retention-manager.html
+com.chuckerteam.chucker.api
+

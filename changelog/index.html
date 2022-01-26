@@ -1,0 +1,1848 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A network inspection library">
+      
+      
+        <meta name="author" content="Chucker Team">
+      
+      
+        <link rel="canonical" href="https://vbuberen.github.io/chucker/changelog/">
+      
+      <link rel="icon" href="../assets/favicon.svg">
+      <meta name="generator" content="mkdocs-1.2.3, mkdocs-material-8.1.8">
+    
+    
+      
+        <title>Changelog - Chucker</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.6e60f8b8.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.e6a45f82.min.css">
+        
+          
+          
+          <meta name="theme-color" content="#4051b5">
+        
+      
+    
+    
+    
+      
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700%7CRoboto+Mono&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="" data-md-color-primary="indigo" data-md-color-accent="green">
+  
+    
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#change-log" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Chucker" class="md-header__button md-logo" aria-label="Chucker" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Chucker
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Changelog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" aria-label="Clear" tabindex="-1">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/vbuberen/chucker/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Chucker
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Chucker" class="md-nav__button md-logo" aria-label="Chucker" data-md-component="logo">
+      
+  <img src="../assets/logo.svg" alt="logo">
+
+    </a>
+    Chucker
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/vbuberen/chucker/" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81z"/></svg>
+  </div>
+  <div class="md-source__repository">
+    Chucker
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        Overview
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting_started/" class="md-nav__link">
+        Getting started
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../configuration/" class="md-nav__link">
+        Advanced configuration
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Changelog
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Changelog
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-352-2021-07-28" class="md-nav__link">
+    Version 3.5.2 (2021-07-28)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-351-2021-07-19" class="md-nav__link">
+    Version 3.5.1 (2021-07-19)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.5.1 (2021-07-19)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-350-2021-06-29" class="md-nav__link">
+    Version 3.5.0 (2021-06-29)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.5.0 (2021-06-29)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-340-2020-11-05" class="md-nav__link">
+    Version 3.4.0 (2020-11-05)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.4.0 (2020-11-05)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_1" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_3" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated" class="md-nav__link">
+    Deprecated
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-330-2020-09-30" class="md-nav__link">
+    Version 3.3.0 (2020-09-30)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.3.0 (2020-09-30)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes" class="md-nav__link">
+    Summary of changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecations" class="md-nav__link">
+    Deprecations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-updates" class="md-nav__link">
+    Dependency updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-320-2020-04-04" class="md-nav__link">
+    Version 3.2.0 (2020-04-04)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.2.0 (2020-04-04)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_1" class="md-nav__link">
+    Summary of changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes_1" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-updates_1" class="md-nav__link">
+    Dependency updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_1" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-312-2020-02-09" class="md-nav__link">
+    Version 3.1.2 (2020-02-09)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.1.2 (2020-02-09)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_2" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes_2" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_2" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-311-2020-01-25" class="md-nav__link">
+    Version 3.1.1 (2020-01-25)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.1.1 (2020-01-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_3" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_3" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-310-2020-01-24" class="md-nav__link">
+    Version 3.1.0 (2020-01-24)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.1.0 (2020-01-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-version-shouldnt-be-used-as-dependency-due-to-203-use-311-instead" class="md-nav__link">
+    This version shouldn't be used as dependency due to #203. Use 3.1.1 instead.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_4" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes_3" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-updates_2" class="md-nav__link">
+    Dependency Updates
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#credits_4" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-301-2019-08-16" class="md-nav__link">
+    Version 3.0.1 (2019-08-16)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.0.1 (2019-08-16)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_5" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_5" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-300-2019-08-12" class="md-nav__link">
+    Version 3.0.0 (2019-08-12)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.0.0 (2019-08-12)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_6" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-204-2019-05-18" class="md-nav__link">
+    Version 2.0.4 (2019-05-18)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-203-2018-11-28" class="md-nav__link">
+    Version 2.0.3 (2018-11-28)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-202-2018-11-14" class="md-nav__link">
+    Version 2.0.2 (2018-11-14)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-201-2018-11-05" class="md-nav__link">
+    Version 2.0.1 (2018-11-05)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-110-2017-08-06" class="md-nav__link">
+    Version 1.1.0 (2017-08-06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-104-2017-02-22" class="md-nav__link">
+    Version 1.0.4 (2017-02-22)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-103-2017-02-14" class="md-nav__link">
+    Version 1.0.3 (2017-02-14)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-102-2017-02-10" class="md-nav__link">
+    Version 1.0.2 (2017-02-10)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-101-2017-02-09" class="md-nav__link">
+    Version 1.0.1 (2017-02-09)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-2017-02-07" class="md-nav__link">
+    Version 1.0.0 (2017-02-07)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+      
+        <input class="md-nav__toggle md-toggle" data-md-toggle="__nav_5" type="checkbox" id="__nav_5" >
+      
+      
+      
+      
+        <label class="md-nav__link" for="__nav_5">
+          Migrations
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <nav class="md-nav" aria-label="Migrations" data-md-level="1">
+        <label class="md-nav__title" for="__nav_5">
+          <span class="md-nav__icon md-icon"></span>
+          Migrations
+        </label>
+        <ul class="md-nav__list" data-md-scrollfix>
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/migrating_from_2.0/" class="md-nav__link">
+        From Chucker 2.0
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../migrations/migrating_from_chuck/" class="md-nav__link">
+        From Chuck
+      </a>
+    </li>
+  
+
+            
+          
+        </ul>
+      </nav>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../snapshots/" class="md-nav__link">
+        Snapshots
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../faq/" class="md-nav__link">
+        FAQ
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contributing/" class="md-nav__link">
+        Contributing
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../team/" class="md-nav__link">
+        Team
+      </a>
+    </li>
+  
+
+    
+      
+      
+      
+
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kdoc/" class="md-nav__link">
+        Docs
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#unreleased" class="md-nav__link">
+    Unreleased
+  </a>
+  
+    <nav class="md-nav" aria-label="Unreleased">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-352-2021-07-28" class="md-nav__link">
+    Version 3.5.2 (2021-07-28)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-351-2021-07-19" class="md-nav__link">
+    Version 3.5.1 (2021-07-19)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.5.1 (2021-07-19)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#fixed_1" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-350-2021-06-29" class="md-nav__link">
+    Version 3.5.0 (2021-06-29)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.5.0 (2021-06-29)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_1" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_2" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-340-2020-11-05" class="md-nav__link">
+    Version 3.4.0 (2020-11-05)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.4.0 (2020-11-05)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#added_2" class="md-nav__link">
+    Added
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#changed_1" class="md-nav__link">
+    Changed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#removed_1" class="md-nav__link">
+    Removed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fixed_3" class="md-nav__link">
+    Fixed
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecated" class="md-nav__link">
+    Deprecated
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-330-2020-09-30" class="md-nav__link">
+    Version 3.3.0 (2020-09-30)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.3.0 (2020-09-30)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes" class="md-nav__link">
+    Summary of changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deprecations" class="md-nav__link">
+    Deprecations
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-updates" class="md-nav__link">
+    Dependency updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-320-2020-04-04" class="md-nav__link">
+    Version 3.2.0 (2020-04-04)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.2.0 (2020-04-04)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_1" class="md-nav__link">
+    Summary of changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes_1" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-updates_1" class="md-nav__link">
+    Dependency updates
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_1" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-312-2020-02-09" class="md-nav__link">
+    Version 3.1.2 (2020-02-09)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.1.2 (2020-02-09)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_2" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes_2" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_2" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-311-2020-01-25" class="md-nav__link">
+    Version 3.1.1 (2020-01-25)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.1.1 (2020-01-25)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_3" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_3" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-310-2020-01-24" class="md-nav__link">
+    Version 3.1.0 (2020-01-24)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.1.0 (2020-01-24)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#this-version-shouldnt-be-used-as-dependency-due-to-203-use-311-instead" class="md-nav__link">
+    This version shouldn't be used as dependency due to #203. Use 3.1.1 instead.
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_4" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bugfixes_3" class="md-nav__link">
+    Bugfixes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-updates_2" class="md-nav__link">
+    Dependency Updates
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Updates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#credits_4" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-301-2019-08-16" class="md-nav__link">
+    Version 3.0.1 (2019-08-16)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.0.1 (2019-08-16)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_5" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#credits_5" class="md-nav__link">
+    Credits
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-300-2019-08-12" class="md-nav__link">
+    Version 3.0.0 (2019-08-12)
+  </a>
+  
+    <nav class="md-nav" aria-label="Version 3.0.0 (2019-08-12)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#summary-of-changes_6" class="md-nav__link">
+    Summary of Changes
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#contributors" class="md-nav__link">
+    Contributors
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-204-2019-05-18" class="md-nav__link">
+    Version 2.0.4 (2019-05-18)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-203-2018-11-28" class="md-nav__link">
+    Version 2.0.3 (2018-11-28)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-202-2018-11-14" class="md-nav__link">
+    Version 2.0.2 (2018-11-14)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-201-2018-11-05" class="md-nav__link">
+    Version 2.0.1 (2018-11-05)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-110-2017-08-06" class="md-nav__link">
+    Version 1.1.0 (2017-08-06)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-104-2017-02-22" class="md-nav__link">
+    Version 1.0.4 (2017-02-22)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-103-2017-02-14" class="md-nav__link">
+    Version 1.0.3 (2017-02-14)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-102-2017-02-10" class="md-nav__link">
+    Version 1.0.2 (2017-02-10)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-101-2017-02-09" class="md-nav__link">
+    Version 1.0.1 (2017-02-09)
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-100-2017-02-07" class="md-nav__link">
+    Version 1.0.0 (2017-02-07)
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content" data-md-component="content">
+            <article class="md-content__inner md-typeset">
+              
+                
+<a href="https://github.com/vbuberen/chucker/edit/master/docs/changelog.md" title="Edit this page" class="md-content__button md-icon">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20.71 7.04c.39-.39.39-1.04 0-1.41l-2.34-2.34c-.37-.39-1.02-.39-1.41 0l-1.84 1.83 3.75 3.75M3 17.25V21h3.75L17.81 9.93l-3.75-3.75L3 17.25z"/></svg>
+</a>
+
+
+<h1 id="change-log">Change Log<a class="headerlink" href="#change-log" title="Permanent link">&para;</a></h1>
+<p>This file follows <a href="https://keepachangelog.com/">Keepachangelog</a> format.
+Please add your entries according to this format.</p>
+<h2 id="unreleased">Unreleased<a class="headerlink" href="#unreleased" title="Permanent link">&para;</a></h2>
+<h3 id="added">Added<a class="headerlink" href="#added" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Decoding of request and response bodies can now be customized. In order to do this a <code>BodyDecoder</code> interface needs to be implemented and installed in the <code>ChuckerInterceptor</code> via <code>ChuckerInterceptor.addBinaryDecoder(decoder)</code> method. Decoded bodies are then displayed in the Chucker UI.</li>
+<li>Create dynamic shortcut when <code>ChuckerInterceptor</code> added. Users can opt out of this feature using <code>createShortcut(false)</code> in <code>ChuckerInterceptor.Builder</code></li>
+<li>Brotli compression support</li>
+<li>Added ability to export list of transactions as .har file.</li>
+<li>Added ability to save single transaction as .har file.</li>
+</ul>
+<h3 id="fixed">Fixed<a class="headerlink" href="#fixed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixed request headers not being redacted in case of failures <a href="https://github.com/ChuckerTeam/chucker/issues/545">#545</a>.</li>
+<li>Fixed wrongful processing of one shot and duplex requests <a href="https://github.com/ChuckerTeam/chucker/issues/544">#544</a>.</li>
+<li>Fixed writing to database on the main thread <a href="https://github.com/ChuckerTeam/chucker/issues/487">#487</a>.</li>
+<li>Fixed RTL issue in payload view</li>
+<li>Fixed StrictMode ThreadPolicy violations <a href="https://github.com/ChuckerTeam/chucker/issues/737">#737</a></li>
+</ul>
+<h3 id="removed">Removed<a class="headerlink" href="#removed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Removed parametrized <code>ChuckerInterceptor</code> constructor in favour of builder pattern. Constructor that accepts only <code>Context</code> is still available.</li>
+<li>Removed the Throwable reporting feature as well as all the @Deprecated related methods.</li>
+</ul>
+<h3 id="changed">Changed<a class="headerlink" href="#changed" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Updated OkHttp to 4.9.1</li>
+</ul>
+<h2 id="version-352-2021-07-28">Version 3.5.2 <em>(2021-07-28)</em><a class="headerlink" href="#version-352-2021-07-28" title="Permanent link">&para;</a></h2>
+<p>This release is a re-deployment of 3.5.1, since 3.5.1 <code>aar</code> didn't upload properly on Maven Central.</p>
+<h2 id="version-351-2021-07-19">Version 3.5.1 <em>(2021-07-19)</em><a class="headerlink" href="#version-351-2021-07-19" title="Permanent link">&para;</a></h2>
+<p>Note: this release wasn't properly uploaded to Maven Central, so update to a newer verion is required.</p>
+<h3 id="fixed_1">Fixed<a class="headerlink" href="#fixed_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fix crash on Android 12 due to missing immutability flags in deprecated error reporting feature <a href="https://github.com/ChuckerTeam/chucker/pull/653">#653</a>.</li>
+</ul>
+<h2 id="version-350-2021-06-29">Version 3.5.0 <em>(2021-06-29)</em><a class="headerlink" href="#version-350-2021-06-29" title="Permanent link">&para;</a></h2>
+<p>Note: this release has issue with Android 12 support, so update to 3.5.2 is highly recommended.</p>
+<h3 id="added_1">Added<a class="headerlink" href="#added_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Android 12 support.</li>
+</ul>
+<h3 id="fixed_2">Fixed<a class="headerlink" href="#fixed_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fix crash on Android 12 due to missing immutability flags <a href="https://github.com/ChuckerTeam/chucker/issues/593">#593</a>.</li>
+<li>Fix not setting request body type correctly <a href="https://github.com/ChuckerTeam/chucker/issues/538">#538</a>.</li>
+</ul>
+<h2 id="version-340-2020-11-05"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.4.0">Version 3.4.0</a> <em>(2020-11-05)</em><a class="headerlink" href="#version-340-2020-11-05" title="Permanent link">&para;</a></h2>
+<h3 id="added_2">Added<a class="headerlink" href="#added_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ChuckerInterceptor.Builder</code> for fluent creation of the interceptor. It will also help us with preserving binary compatibility in future releases of <code>4.x</code>. [#462]</li>
+</ul>
+<h3 id="changed_1">Changed<a class="headerlink" href="#changed_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Bumped <code>targetSDK</code> and <code>compileSDK</code> to 30 (Android 11).</li>
+</ul>
+<h3 id="removed_1">Removed<a class="headerlink" href="#removed_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>kotlin-android-extensions</code> plugin for better compatibility with Kotlin 1.4.20.</li>
+</ul>
+<h3 id="fixed_3">Fixed<a class="headerlink" href="#fixed_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixed memory leak in MainActivity <a href="https://github.com/ChuckerTeam/chucker/issues/465">#465</a>.</li>
+<li>Fixed <code>GzipSource is not closed</code> error reported by StrictMode <a href="https://github.com/ChuckerTeam/chucker/issues/472">#472</a>.</li>
+<li>Fixed build failure for projects with new <code>kotlin-parcelize</code> plugin <a href="https://github.com/ChuckerTeam/chucker/issues/480">#480</a>.</li>
+</ul>
+<h3 id="deprecated">Deprecated<a class="headerlink" href="#deprecated" title="Permanent link">&para;</a></h3>
+<ul>
+<li><code>ChuckerInterceptor</code> constructor is now deprecated. Unless <code>Context</code> is the only parameter that you pass into the constructor you should migrate to builder.</li>
+</ul>
+<h2 id="version-330-2020-09-30"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.3.0">Version 3.3.0</a> <em>(2020-09-30)</em><a class="headerlink" href="#version-330-2020-09-30" title="Permanent link">&para;</a></h2>
+<p>This is a new minor release with multiple fixes and improvements.
+After this release we are starting to work on a new major release 4.x with minSDK 21.
+Bumping minSDK to 21 is required to keep up with <a href="https://medium.com/square-corner-blog/okhttp-3-13-requires-android-5-818bb78d07ce">newer versions of OkHttp</a>.
+Versions 3.x will be supported for 6 months (till March 2021) getting bugfixes and minor improvements.</p>
+<h3 id="summary-of-changes">Summary of changes<a class="headerlink" href="#summary-of-changes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added a new flag <code>alwaysReadResponseBody</code> into Chucker configuration to read the whole response body even if consumer fails to consume it.</li>
+<li>Added port numbers as part of the URL. Numbers appear if they are different from default 80 or 443.</li>
+<li>Chucker now shows partially read application responses properly. Earlier in 3.2.0 such responses didn't appear in the UI.</li>
+<li>Transaction size is defined by actual payload size now, not by <code>Content-length</code> header.</li>
+<li>Added empty state UI for payloads, so no more guessing if there is some error or the payload is really empty.</li>
+<li>Added ability to export list of transactions.</li>
+<li>Added ability to save single transaction as file.</li>
+<li>Added ability to format URL encoded forms with button to switch between encoded/decoded URLs.</li>
+<li>Added generation of contrast background for image payload to distinguish Chucker UI from the image itself.</li>
+<li>Switched OkHttp dependency from <code>implementation</code> to <code>api</code>, since it is available in the public API.</li>
+<li>List items are now focusable on Android TV devices.</li>
+<li>Further improved test coverage.</li>
+</ul>
+<h3 id="deprecations">Deprecations<a class="headerlink" href="#deprecations" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Throwables capturing feature is officially deprecated and will be removed in next releases. More info in <a href="https://github.com/ChuckerTeam/chucker/issues/321">#321</a>.</li>
+</ul>
+<h3 id="bugfixes">Bugfixes<a class="headerlink" href="#bugfixes" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixed <a href="https://github.com/ChuckerTeam/chucker/issues/311">#311</a> with leaking Closable resource.</li>
+<li>Fixed <a href="https://github.com/ChuckerTeam/chucker/issues/314">#314</a> with overlapping UI on some device.</li>
+<li>Fixed <a href="https://github.com/ChuckerTeam/chucker/issues/367">#367</a> with empty shared text when <code>Don't keep activities</code> is turned on.</li>
+<li>Fixed <a href="https://github.com/ChuckerTeam/chucker/issues/366">#366</a> with crash when process dies.</li>
+<li>Fixed <a href="https://github.com/ChuckerTeam/chucker/issues/394">#394</a> with failing requests when FileNotFound error happens.</li>
+<li>Fixed <a href="https://github.com/ChuckerTeam/chucker/issues/410">#410</a> with conflicts when other apps already use generic FileProvider.</li>
+<li>Fixed <a href="https://github.com/ChuckerTeam/chucker/issues/422">#422</a> with IOException.</li>
+</ul>
+<h3 id="dependency-updates">Dependency updates<a class="headerlink" href="#dependency-updates" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added Fragment-ktx 1.2.5</li>
+<li>Added Palette-ktx 1.0.0</li>
+<li>Updated Kotlin to 1.4.10</li>
+<li>Updated Android Gradle plugin to 4.0.1</li>
+<li>Updated Coroutine to 1.3.9</li>
+<li>Updated AppCompat to 1.2.0</li>
+<li>Updated ConstraintLayout to 2.0.1</li>
+<li>Updated MaterialComponents to 1.2.1</li>
+<li>Updated Gradle to 6.6.1</li>
+</ul>
+<h3 id="credits">Credits<a class="headerlink" href="#credits" title="Permanent link">&para;</a></h3>
+<p>This release was possible thanks to the contribution of:</p>
+<p>@adb-shell
+@cortinico
+@djrausch
+@gm-vm
+@JayNewstrom
+@MiSikora
+@vbuberen
+@psh</p>
+<h2 id="version-320-2020-04-04"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.2.0">Version 3.2.0</a> <em>(2020-04-04)</em><a class="headerlink" href="#version-320-2020-04-04" title="Permanent link">&para;</a></h2>
+<p>This is a new minor release with numerous internal changes.</p>
+<h3 id="summary-of-changes_1">Summary of changes<a class="headerlink" href="#summary-of-changes_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Chucker won't load the whole response into memory anymore, but will mutlicast it with the help of temporary files. It allows to avoid issues with OOM, like in reported in <a href="https://github.com/ChuckerTeam/chucker/issues/218">#218</a>.
+This change also allows to avoid problems with Chucker consuming responses, like reported in <a href="https://github.com/ChuckerTeam/chucker/issues/242">#242</a>.</li>
+<li>Added a red open padlock icon to clearly indicate HTTP requests in transactions list.</li>
+<li>Added TLS info (version and cipher suite) into <code>Overview</code> tab.</li>
+<li>Added ability to encode/decode URLs.</li>
+<li>Added RTL support.</li>
+<li>Switched from AsyncTasks to Kotlin coroutines.</li>
+<li>Switched to <a href="https://developer.android.com/topic/libraries/view-binding">ViewBinding</a>.</li>
+<li>Bumped targetSDK to 29.</li>
+<li>Greatly increased test coverage (we will add exact numbers and reports pretty soon).</li>
+</ul>
+<h3 id="bugfixes_1">Bugfixes<a class="headerlink" href="#bugfixes_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fix for <a href="https://github.com/ChuckerTeam/chucker/issues/218">#218</a> with OOM exceptions on big responses.</li>
+<li>Fix for <a href="https://github.com/ChuckerTeam/chucker/issues/242">#242</a> with Chucker throwing exceptions when used as <code>networkInterceptor()</code>.</li>
+<li>Fix for <a href="https://github.com/ChuckerTeam/chucker/pull/240">#240</a> with HttpHeader serialisation exceptions when obfuscation is used.</li>
+<li>Fix for <a href="https://github.com/ChuckerTeam/chucker/issues/254">#254</a> with response body search being case-sensitive.</li>
+<li>Fix for <a href="https://github.com/ChuckerTeam/chucker/issues/255">#255</a> with missing search icon on Response tab.</li>
+<li>Fix for <a href="https://github.com/ChuckerTeam/chucker/issues/241">#241</a> with overlapping texts.</li>
+</ul>
+<h3 id="dependency-updates_1">Dependency updates<a class="headerlink" href="#dependency-updates_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Added kotlinx-coroutines-core 1.3.5</li>
+<li>Added kotlinx-coroutines-android 1.3.5</li>
+<li>Updated Kotlin to 1.3.71</li>
+<li>Updated Android Gradle plugin to 3.6.1</li>
+<li>Updated Room to 2.2.5</li>
+<li>Updated OkHttp to 3.12.10</li>
+<li>Updated Detekt to 1.7.3</li>
+<li>Updated Dokka to 0.10.1</li>
+<li>Updated KtLint plugin to 9.2.1</li>
+<li>Updated MaterialComponents to 1.1.0</li>
+<li>Updated Gradle to 6.3</li>
+</ul>
+<h3 id="credits_1">Credits<a class="headerlink" href="#credits_1" title="Permanent link">&para;</a></h3>
+<p>This release was possible thanks to the contribution of:</p>
+<p>@adammasyk
+@cortinico
+@CuriousNikhil
+@hitanshu-dhawan
+@MiSikora
+@technoir42
+@vbuberen</p>
+<h2 id="version-312-2020-02-09"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.1.2">Version 3.1.2</a> <em>(2020-02-09)</em><a class="headerlink" href="#version-312-2020-02-09" title="Permanent link">&para;</a></h2>
+<p>This is hot-fix release to fix multiple issues introduced in <code>3.1.0</code>.</p>
+<h3 id="summary-of-changes_2">Summary of Changes<a class="headerlink" href="#summary-of-changes_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>All Chucker screens now have their own <code>ViewModel</code>. Due to this change user can now open the transaction in progress and the content will appear as soon as transaction finishes. No need for reopening transaction anymore.</li>
+</ul>
+<h3 id="bugfixes_2">Bugfixes<a class="headerlink" href="#bugfixes_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixed an <a href="https://github.com/ChuckerTeam/chucker/issues/225">issue</a> introduced in 3.1.0 where image downloading fails if OkHttp was used for image loading in libraries like Glide, Picasso or Coil.</li>
+<li>Fixed an <a href="https://github.com/ChuckerTeam/chucker/pull/214">issue</a> with invalid CURL command generation.</li>
+<li>Fixed an <a href="https://github.com/ChuckerTeam/chucker/issues/217">issue</a> with crashes if ProGuard/R8 minification is applied to Chucker.</li>
+<li>Fixed an <a href="https://github.com/ChuckerTeam/chucker/pull/221">issue</a> with crash when user taps Save in a transaction, which is still in progress.</li>
+<li>Fixed an <a href="https://github.com/ChuckerTeam/chucker/pull/222">issue</a> with crash when user taps Clear from notification shade while the original app is already dead.</li>
+<li>Fixed an <a href="https://github.com/ChuckerTeam/chucker/pull/223">issue</a> with possible NPEs.</li>
+</ul>
+<h3 id="credits_2">Credits<a class="headerlink" href="#credits_2" title="Permanent link">&para;</a></h3>
+<p>This release was possible thanks to the contribution of:</p>
+<p>@MiSikora
+@vbuberen</p>
+<h2 id="version-311-2020-01-25"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.1.1">Version 3.1.1</a> <em>(2020-01-25)</em><a class="headerlink" href="#version-311-2020-01-25" title="Permanent link">&para;</a></h2>
+<p>This is hot-fix release to fix issue introduced in <code>3.1.0</code>.</p>
+<h3 id="summary-of-changes_3">Summary of Changes<a class="headerlink" href="#summary-of-changes_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixed an <a href="https://github.com/ChuckerTeam/chucker/issues/203">issue</a> introduced in 3.1.0 where some of response bodies were shown as <code>null</code> and their sizes were 0 bytes.</li>
+</ul>
+<h3 id="credits_3">Credits<a class="headerlink" href="#credits_3" title="Permanent link">&para;</a></h3>
+<p>This release was possible thanks to the contribution of:</p>
+<p>@cortinico</p>
+<h2 id="version-310-2020-01-24"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.1.0">Version 3.1.0</a> <em>(2020-01-24)</em><a class="headerlink" href="#version-310-2020-01-24" title="Permanent link">&para;</a></h2>
+<h3 id="this-version-shouldnt-be-used-as-dependency-due-to-203-use-311-instead">This version shouldn't be used as dependency due to <a href="https://github.com/ChuckerTeam/chucker/issues/203">#203</a>. Use 3.1.1 instead.<a class="headerlink" href="#this-version-shouldnt-be-used-as-dependency-due-to-203-use-311-instead" title="Permanent link">&para;</a></h3>
+<p>This is a new minor release of Chucker. Please note that this minor release contains multiple new features (see below) as well as multiple bugfixes.</p>
+<h3 id="summary-of-changes_4">Summary of Changes<a class="headerlink" href="#summary-of-changes_4" title="Permanent link">&para;</a></h3>
+<ul>
+<li>The library is now fully converted to Kotlin and migrated to AndroidX!</li>
+<li>The whole UI has been revamped to support Dark Theme which follows your device theme.</li>
+<li>The Response/Request Body is now displayed in a <code>RecyclerView</code>, drastically improving performances on big payloads.</li>
+<li>HTTP Response/Request Body can now be saved in file.</li>
+<li>Notifications for Throwable and HTTP Traffic are now going into separate channels.</li>
+<li>A lot of classes inside the <code>.internal</code> package have restricted visibility (from public to internal). Also, resources like strings, dimens and drawables from Chucker won't appear in your autocomplete suggestions.</li>
+</ul>
+<h3 id="bugfixes_3">Bugfixes<a class="headerlink" href="#bugfixes_3" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fixed ANRs during big response payloads processing.</li>
+<li>Fixed contentType response formatting.</li>
+<li>Fixed notifications importance in Android Q.</li>
+<li>Fixed date formatting in transaction overview.</li>
+<li>Fixed visibility of internal library classes and resources.</li>
+<li>Fixed XML formatting crash</li>
+</ul>
+<h3 id="dependency-updates_2">Dependency Updates<a class="headerlink" href="#dependency-updates_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Updated Kotlin to 1.3.61</li>
+<li>Updated Retrofit to 2.6.4</li>
+<li>Updated Room to 2.2.3</li>
+<li>Updated OkHttp to 3.12.6</li>
+<li>Updated Gson to 2.8.6</li>
+<li>Updated Dokka to 0.10.0</li>
+<li>Updated KtLint to 9.1.1</li>
+<li>Updated Gradle wrapper to 6.1</li>
+<li>Updated Android Gradle plugin to 3.5.3</li>
+</ul>
+<h4 id="credits_4">Credits<a class="headerlink" href="#credits_4" title="Permanent link">&para;</a></h4>
+<p>This release was possible thanks to the contribution of:</p>
+<p>@christopherniksch
+@yoavst
+@psh
+@kmayoral
+@vbuberen
+@dcampogiani
+@ullas-jain
+@rakshit444
+@olivierperez
+@p-schneider
+@Volfor
+@cortinico
+@koral--
+@redwarp
+@uOOOO
+@sprohaszka
+@PaulWoitaschek</p>
+<h2 id="version-301-2019-08-16"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.0.1">Version 3.0.1</a> <em>(2019-08-16)</em><a class="headerlink" href="#version-301-2019-08-16" title="Permanent link">&para;</a></h2>
+<p>This is a hotfix release for Chucker <code>3.0.0</code>.</p>
+<h3 id="summary-of-changes_5">Summary of Changes<a class="headerlink" href="#summary-of-changes_5" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Fix: <a href="https://github.com/ChuckerTeam/chucker/pull/96">#96</a> Limit size of binary image to 1 million bytes.</li>
+</ul>
+<h3 id="credits_5">Credits<a class="headerlink" href="#credits_5" title="Permanent link">&para;</a></h3>
+<p>This release was possible thanks to the contribution of: @redwarp</p>
+<h2 id="version-300-2019-08-12"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/3.0.0">Version 3.0.0</a> <em>(2019-08-12)</em><a class="headerlink" href="#version-300-2019-08-12" title="Permanent link">&para;</a></h2>
+<p>This is a new major release of Chucker. Please note that this major release contains multiple new features (see below) as well as several breaking changes. Please refer to the <a href="/docs/migrating-from-2.0.md">migration guide</a> if you need support in migrating from <code>2.x</code> -&gt; <code>3.0.0</code> or feel free to open an issue.</p>
+<h3 id="summary-of-changes_6">Summary of Changes<a class="headerlink" href="#summary-of-changes_6" title="Permanent link">&para;</a></h3>
+<ul>
+<li>Chucker DB is now using <a href="https://developer.android.com/topic/libraries/architecture/room">Room</a> instead of <a href="https://bitbucket.org/littlerobots/cupboard/wiki/Home">Cupboard</a> as ORM.</li>
+<li>The public api of Chucker (classes in <code>com.chuckerteam.chucker.api</code>) is now rewritten in Kotlin.</li>
+<li>Classes inside the <code>.internal</code> package should now not be considered part of the public api and expect them to change without major version bump.</li>
+<li>Removed usage of <code>okhttp3.internal</code> methods.</li>
+<li>General UI update of the library (new using ConstraintLayout)</li>
+<li>Added support to render images in Response page.</li>
+<li>Added support to search and highlight text in the Http Response body.</li>
+<li>We moved the artifact from JCenter to JitPack</li>
+</ul>
+<h3 id="contributors">Contributors<a class="headerlink" href="#contributors" title="Permanent link">&para;</a></h3>
+<p>This release was possible thanks to the contribution of:</p>
+<p>@alorma
+@Ashok-Varma
+@cortinico
+@koral--
+@olivierperez
+@OlliZi
+@PaulWoitaschek
+@psh
+@redwarp
+@uOOOO</p>
+<h2 id="version-204-2019-05-18"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/2.0.4">Version 2.0.4</a> <em>(2019-05-18)</em><a class="headerlink" href="#version-204-2019-05-18" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix: <a href="https://github.com/ChuckerTeam/chucker/pull/27">#27</a> no-op Chuck#init method is missing</li>
+</ul>
+<h2 id="version-203-2018-11-28"><a href="https://github.com/ChuckerTeam/chucker/releases/tag/2.0.3">Version 2.0.3</a> <em>(2018-11-28)</em><a class="headerlink" href="#version-203-2018-11-28" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix: <a href="https://github.com/ChuckerTeam/chucker/pull/20">#20</a> Changed SqLite DB Version Number 3 -&gt; 4</li>
+</ul>
+<h2 id="version-202-2018-11-14">Version 2.0.2 <em>(2018-11-14)</em><a class="headerlink" href="#version-202-2018-11-14" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix: <a href="https://github.com/ChuckerTeam/chucker/pull/5">#5</a> Empty Content-Encoding are allowed again</li>
+</ul>
+<h2 id="version-201-2018-11-05">Version 2.0.1 <em>(2018-11-05)</em><a class="headerlink" href="#version-201-2018-11-05" title="Permanent link">&para;</a></h2>
+<ul>
+<li>New: Adds a class ChuckCollector that can be used out of ChuckInterceptor.</li>
+<li>New: Chucker can now collect throwables.</li>
+<li>New: Adds a notification for throwables.</li>
+<li>New: Adds screens for throwables.</li>
+<li>New: Transaction class offers a fluent writing.</li>
+<li>New: Adds Chuck.registerDefaultCrashHanlder for <strong>debugging purpose only</strong>.</li>
+<li>Breaking: Chuck.getLaunchIntent needs one more parameter.</li>
+<li>Breaking: Built with Android plugin 3.1.x.</li>
+<li>Breaking: Target SDK version 27.</li>
+<li>Breaking: Support library 27.1.1.</li>
+<li>Breaking: API classes are now in package <code>api</code>.</li>
+<li>Misc: Move some internal classes.</li>
+</ul>
+<h2 id="version-110-2017-08-06">Version 1.1.0 <em>(2017-08-06)</em><a class="headerlink" href="#version-110-2017-08-06" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix: Supports apps targeting Android O (API 26).</li>
+</ul>
+<h2 id="version-104-2017-02-22">Version 1.0.4 <em>(2017-02-22)</em><a class="headerlink" href="#version-104-2017-02-22" title="Permanent link">&para;</a></h2>
+<ul>
+<li>New: Displays uncompressed gzip encoded request/response bodies when used as a network interceptor.</li>
+</ul>
+<h2 id="version-103-2017-02-14">Version 1.0.3 <em>(2017-02-14)</em><a class="headerlink" href="#version-103-2017-02-14" title="Permanent link">&para;</a></h2>
+<ul>
+<li>New: Adds a maximum content length threshold, beyond which bodies are truncated.</li>
+<li>New: Adds a data retention length property and cleanup task.</li>
+<li>New: Adds a clear action to the notification.</li>
+<li>Fix: Mitigates against CursorWindow blowout when transactions are large.</li>
+</ul>
+<h2 id="version-102-2017-02-10">Version 1.0.2 <em>(2017-02-10)</em><a class="headerlink" href="#version-102-2017-02-10" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Fix: Added Proguard rule for compat SearchView.</li>
+<li>Fix: Null search query displaying invalid results.</li>
+</ul>
+<h2 id="version-101-2017-02-09">Version 1.0.1 <em>(2017-02-09)</em><a class="headerlink" href="#version-101-2017-02-09" title="Permanent link">&para;</a></h2>
+<ul>
+<li>New: Adds a search action which filters on request path or response code.</li>
+<li>New: Adds a transaction count to the notification.</li>
+<li>Fix: Limits the size of the static transaction buffer correctly.</li>
+</ul>
+<h2 id="version-100-2017-02-07">Version 1.0.0 <em>(2017-02-07)</em><a class="headerlink" href="#version-100-2017-02-07" title="Permanent link">&para;</a></h2>
+<p>Initial release.</p>
+
+              
+            </article>
+          </div>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    <nav class="md-footer__inner md-grid" aria-label="Footer">
+      
+        
+        <a href="../configuration/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Advanced configuration" rel="prev">
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12z"/></svg>
+          </div>
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              Advanced configuration
+            </div>
+          </div>
+        </a>
+      
+      
+        
+        <a href="../migrations/migrating_from_2.0/" class="md-footer__link md-footer__link--next" aria-label="Next: From Chucker 2.0" rel="next">
+          <div class="md-footer__title">
+            <div class="md-ellipsis">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              From Chucker 2.0
+            </div>
+          </div>
+          <div class="md-footer__button md-icon">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11H4z"/></svg>
+          </div>
+        </a>
+      
+    </nav>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2018-2020 Chucker Team.
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    <a href="https://kotlinlang.slack.com/archives/CRWD6370R" target="_blank" rel="noopener" title="Chucker channel in Slack" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M94.12 315.1c0 25.9-21.16 47.06-47.06 47.06S0 341 0 315.1c0-25.9 21.16-47.06 47.06-47.06h47.06v47.06zm23.72 0c0-25.9 21.16-47.06 47.06-47.06s47.06 21.16 47.06 47.06v117.84c0 25.9-21.16 47.06-47.06 47.06s-47.06-21.16-47.06-47.06V315.1zm47.06-188.98c-25.9 0-47.06-21.16-47.06-47.06S139 32 164.9 32s47.06 21.16 47.06 47.06v47.06H164.9zm0 23.72c25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06H47.06C21.16 243.96 0 222.8 0 196.9s21.16-47.06 47.06-47.06H164.9zm188.98 47.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06s-21.16 47.06-47.06 47.06h-47.06V196.9zm-23.72 0c0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06V79.06c0-25.9 21.16-47.06 47.06-47.06 25.9 0 47.06 21.16 47.06 47.06V196.9zM283.1 385.88c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06-25.9 0-47.06-21.16-47.06-47.06v-47.06h47.06zm0-23.72c-25.9 0-47.06-21.16-47.06-47.06 0-25.9 21.16-47.06 47.06-47.06h117.84c25.9 0 47.06 21.16 47.06 47.06 0 25.9-21.16 47.06-47.06 47.06H283.1z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    <script id="__config" type="application/json">{"base": "..", "features": [], "translations": {"clipboard.copy": "Copy to clipboard", "clipboard.copied": "Copied to clipboard", "search.config.lang": "en", "search.config.pipeline": "trimmer, stopWordFilter", "search.config.separator": "[\\s\\-]+", "search.placeholder": "Search", "search.result.placeholder": "Type to start searching", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.term.missing": "Missing", "select.version.title": "Select version"}, "search": "../assets/javascripts/workers/search.22074ed6.min.js"}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.960e086b.min.js"></script>
+      
+    
+  </body>
+</html>
